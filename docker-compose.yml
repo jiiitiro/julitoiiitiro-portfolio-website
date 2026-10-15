@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  portfolio-app:
+    build: .
+    container_name: julitotiro_portfolio
+    ports:
+      - "8080:8080"
+    restart: always
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
