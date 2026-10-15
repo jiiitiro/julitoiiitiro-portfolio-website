@@ -3,11 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${name} - Full-Stack Developer Portfolio"></title>
+
+    <!-- Cleaned Website Title -->
+    <title th:text="${name} + ' - Full-Stack Developer Portfolio'"></title>
+
+    <!-- Open Graph (OG) Meta Tags for Social Link Previews -->
+    <meta property="og:title" content="JULITO III T. TIRO - Full-Stack Developer Portfolio">
+    <meta property="og:description" content="BSIT Graduate & Full-Stack Developer specializing in Java, Spring Boot, REST APIs, and Docker.">
+    <meta property="og:image" content="https://julitoiiitiro-portfolio.up.railway.app/images/portfolio_pic.png">
+    <meta property="og:url" content="https://julitoiiitiro-portfolio.up.railway.app/">
+    <meta property="og:type" content="website">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body class="bg-slate-950 text-slate-100 font-sans leading-relaxed selection:bg-fuchsia-500 selection:text-white relative overflow-x-hidden">
 
 <!-- Background Radiant Gradients -->
