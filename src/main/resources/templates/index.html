@@ -26,12 +26,19 @@
 <div class="absolute top-1/3 right-10 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 <div class="absolute bottom-1/4 left-10 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
-<!-- Radiant Header Navigation -->
+<!-- Radiant Header Navigation with Mobile Hamburger Menu -->
 <header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-fuchsia-500/20">
     <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         <a href="#" class="text-xl font-extrabold bg-gradient-to-r from-fuchsia-400 via-pink-400 to-amber-300 bg-clip-text text-transparent tracking-wider" th:text="${name}">
             JULITO III T. TIRO
         </a>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="mobile-menu-btn" type="button" class="md:hidden text-slate-300 hover:text-fuchsia-400 text-2xl focus:outline-none transition">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Desktop Navigation -->
         <nav class="hidden md:flex space-x-8 text-sm font-semibold text-slate-300 items-center">
             <a href="#about" class="hover:text-fuchsia-400 transition">About</a>
             <a href="#skills" class="hover:text-cyan-400 transition">Skills</a>
@@ -43,6 +50,18 @@
             </a>
         </nav>
     </div>
+
+    <!-- Mobile Navigation Menu Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-950/95 border-b border-fuchsia-500/20 px-6 py-4 space-y-4 text-center font-semibold text-slate-300">
+        <a href="#about" class="block hover:text-fuchsia-400 transition">About</a>
+        <a href="#skills" class="block hover:text-cyan-400 transition">Skills</a>
+        <a href="#projects" class="block hover:text-amber-400 transition">Projects</a>
+        <a href="#experience" class="block hover:text-emerald-400 transition">Experience</a>
+        <a href="#certifications" class="block hover:text-rose-400 transition">Certifications</a>
+        <a href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="inline-block text-purple-400 text-2xl pt-2">
+            <i class="fa-brands fa-github"></i>
+        </a>
+    </div>
 </header>
 
 <!-- Radiant Hero Section with Profile Picture on the Right -->
@@ -50,9 +69,9 @@
 
     <!-- Text Content (Left Side) -->
     <div class="md:w-3/5">
-            <span class="inline-block px-3 py-1 text-xs font-bold uppercase tracking-widest text-fuchsia-300 bg-fuchsia-950/80 border border-fuchsia-500/50 rounded-full mb-4">
-                ✨ Ready for Innovation
-            </span>
+        <span class="inline-block px-3 py-1 text-xs font-bold uppercase tracking-widest text-fuchsia-300 bg-fuchsia-950/80 border border-fuchsia-500/50 rounded-full mb-4">
+            ✨ Ready for Innovation
+        </span>
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mt-2 mb-4 leading-tight">
             Hi, I'm <span class="bg-gradient-to-r from-fuchsia-400 via-rose-400 to-amber-400 bg-clip-text text-transparent" th:text="${name}">JULITO III T. TIRO</span>
         </h1>
@@ -68,20 +87,19 @@
                 <span>github.com/jiiitiro</span>
             </a>
             <span class="flex items-center gap-2 bg-slate-900/90 px-4 py-2.5 rounded-xl border border-pink-500/40 text-pink-300 shadow-lg shadow-pink-950/20">
-                    <i class="fa-solid fa-location-dot text-pink-400"></i>
-                    <span th:text="${location}">Quezon City, Philippines</span>
-                </span>
+                <i class="fa-solid fa-location-dot text-pink-400"></i>
+                <span th:text="${location}">Deparo, Caloocan City, Philippines</span>
+            </span>
             <span class="flex items-center gap-2 bg-slate-900/90 px-4 py-2.5 rounded-xl border border-amber-500/40 text-amber-300 shadow-lg shadow-amber-950/20">
-                    <i class="fa-solid fa-phone text-amber-400"></i>
-                    <span th:text="${phone}">+63 961 604 9255</span>
-                </span>
+                <i class="fa-solid fa-phone text-amber-400"></i>
+                <span th:text="${phone}">+63 961 604 9255</span>
+            </span>
             <!-- Enhanced Email Me Button -->
             <a th:href="'mailto:' + ${email}"
                class="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-2.5 rounded-xl text-white font-semibold shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-200">
                 <i class="fa-solid fa-paper-plane"></i>
                 <span>Email Me</span>
             </a>
-
         </div>
     </div>
 
@@ -105,7 +123,6 @@
     </div>
 
 </section>
-
 
 <!-- Colorful Technical Skills Section -->
 <section id="skills" class="bg-slate-900/60 py-20 border-y border-slate-800 backdrop-blur-md">
@@ -262,9 +279,11 @@
     </div>
 </section>
 
-<!-- Education & Certifications -->
+<!-- Education & Certifications Section -->
 <section id="certifications" class="py-20 max-w-6xl mx-auto px-6">
     <div class="grid md:grid-cols-2 gap-12">
+
+        <!-- Education Card -->
         <div>
             <h2 class="text-3xl font-extrabold text-white mb-6 flex items-center gap-3">
                 <i class="fa-solid fa-graduation-cap text-rose-400"></i> Education
@@ -275,18 +294,48 @@
                 <p class="text-slate-400 text-sm mt-1">Graduated 2025</p>
             </div>
         </div>
+
+        <!-- Complete Certifications & Training List -->
         <div>
             <h2 class="text-3xl font-extrabold text-white mb-6 flex items-center gap-3">
                 <i class="fa-solid fa-certificate text-fuchsia-400"></i> Certifications & Training
             </h2>
             <ul class="space-y-3 text-slate-300 text-sm">
-                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-fuchsia-400 mt-1"></i> TESDA Java NC III (Enrolled / Ongoing)</li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-cyan-400 mt-1"></i> Master Java, Spring 6, Spring Boot 3, Spring Security, Docker & Microservices - Udemy</li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i> Microsoft Learn for Power Apps: Canvas Apps, Dataverse, & Model-Driven Apps</li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-amber-400 mt-1"></i> NSE 1 Network Security Associate - Fortinet</li>
-                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-rose-400 mt-1"></i> Mastering REST API with FastAPI & Flask - Udemy</li>
+                <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-fuchsia-400 mt-1 flex-shrink-0"></i>
+                    <span><strong>Java NC III</strong> – Technical Education and Skills Development Authority (TESDA) <span class="text-fuchsia-400 text-xs font-semibold">(Enrolled / Ongoing)</span></span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-pink-400 mt-1 flex-shrink-0"></i>
+                    <span><strong>Dataverse, Canvas & Model-Driven Power Apps and Automate</strong> – Udemy <span class="text-pink-400 text-xs font-semibold">(Enrolled / Ongoing)</span></span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-purple-400 mt-1 flex-shrink-0"></i>
+                    <span><strong>Microsoft Learn for Power Apps</strong>: Canvas Apps, Dataverse, & Model-Driven Apps in Power Apps</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-cyan-400 mt-1 flex-shrink-0"></i>
+                    <span><strong>Master Java, Spring 6, Spring Boot 3, Spring Security, Docker, & Microservices</strong> – Udemy</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-amber-400 mt-1 flex-shrink-0"></i>
+                    <span><strong>NSE 1 Network Security Associate</strong> – Fortinet</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-emerald-400 mt-1 flex-shrink-0"></i>
+                    <span><strong>Mastering REST API with FastAPI & Flask</strong> – Udemy</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-rose-400 mt-1 flex-shrink-0"></i>
+                    <span><strong>100 Days of Code: The Complete Python Pro Bootcamp</strong> – Udemy</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-check text-blue-400 mt-1 flex-shrink-0"></i>
+                    <span><strong>Ethical Hacking & Cybersecurity Foundations</strong> – Upskill I.T. Workshop / Udemy</span>
+                </li>
             </ul>
         </div>
+
     </div>
 </section>
 
@@ -299,6 +348,23 @@
     </div>
     <p>&copy; 2026 Julito III T. Tiro. All rights reserved.</p>
 </footer>
+
+<!-- Mobile Menu Toggle Script -->
+<script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    });
+</script>
 
 </body>
 </html>

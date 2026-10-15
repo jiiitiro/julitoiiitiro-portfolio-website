@@ -9,7 +9,7 @@ public class PortfolioController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("name", "JULITO III T. TIRO");
+                model.addAttribute("name", "JULITO III T. TIRO");
                 model.addAttribute("title", "Full-Stack Java & Software Developer");
                 model.addAttribute("location", "Quezon City, Philippines");
                 model.addAttribute("email", "julitoiiitiro@gmail.com");
