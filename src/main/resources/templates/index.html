@@ -69,16 +69,19 @@
             </a>
             <span class="flex items-center gap-2 bg-slate-900/90 px-4 py-2.5 rounded-xl border border-pink-500/40 text-pink-300 shadow-lg shadow-pink-950/20">
                     <i class="fa-solid fa-location-dot text-pink-400"></i>
-                    <span th:text="${location}">Deparo, Caloocan City, Philippines</span>
+                    <span th:text="${location}">Quezon City, Philippines</span>
                 </span>
-            <a th:href="'mailto:' + ${email}" class="flex items-center gap-2 bg-slate-900/90 px-4 py-2.5 rounded-xl border border-cyan-500/40 text-cyan-300 hover:border-cyan-400 transition shadow-lg shadow-cyan-950/20">
-                <i class="fa-solid fa-envelope text-cyan-400"></i>
-                <span th:text="${email}">julitoiiitiro@gmail.com</span>
-            </a>
             <span class="flex items-center gap-2 bg-slate-900/90 px-4 py-2.5 rounded-xl border border-amber-500/40 text-amber-300 shadow-lg shadow-amber-950/20">
                     <i class="fa-solid fa-phone text-amber-400"></i>
                     <span th:text="${phone}">+63 961 604 9255</span>
                 </span>
+            <!-- Enhanced Email Me Button -->
+            <a th:href="'mailto:' + ${email}"
+               class="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-2.5 rounded-xl text-white font-semibold shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-200">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Email Me</span>
+            </a>
+
         </div>
     </div>
 
