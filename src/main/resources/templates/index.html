@@ -69,16 +69,17 @@
 
     <!-- Text Content (Left Side) -->
     <div class="md:w-3/5">
-        <span class="inline-block px-3 py-1 text-xs font-bold uppercase tracking-widest text-fuchsia-300 bg-fuchsia-950/80 border border-fuchsia-500/50 rounded-full mb-4">
-            ✨ Ready for Innovation
-        </span>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mt-2 mb-4 leading-tight">
-            Hi, I'm <span class="bg-gradient-to-r from-fuchsia-400 via-rose-400 to-amber-400 bg-clip-text text-transparent" th:text="${name}">JULITO III T. TIRO</span>
+    <span class="inline-block px-3 py-1 text-xs font-bold uppercase tracking-widest text-fuchsia-300 bg-fuchsia-950/80 border border-fuchsia-500/50 rounded-full mb-4">
+        ✨ Ready for Innovation
+    </span>
+        <h1 class="font-black text-white mt-2 mb-4 leading-tight">
+            <span class="block text-xl md:text-2xl lg:text-3xl font-semibold text-slate-300 mb-1">Hi, I'm</span>
+            <span class="text-3xl md:text-5xl lg:text-6xl bg-gradient-to-r from-fuchsia-400 via-rose-400 to-amber-400 bg-clip-text text-transparent" th:text="${name}">JULITO III T. TIRO</span>
         </h1>
-        <h2 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-6" th:text="${title}">
+        <h2 class="text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-6" th:text="${title}">
             Full-Stack Java & Software Developer
         </h2>
-        <p class="text-slate-300 text-lg mb-8 leading-relaxed">
+        <p class="text-slate-300 text-base md:text-lg mb-8 leading-relaxed">
             BSIT Graduate & Full-Stack Developer specializing in Java, Spring Boot, REST APIs, SQL, and Docker, with practical expertise in Microsoft Power Apps and workflow automation. Driven to build scalable enterprise web applications and low-code digital solutions.
         </p>
         <div class="flex flex-wrap gap-4 text-sm font-medium">
@@ -87,13 +88,13 @@
                 <span>github.com/jiiitiro</span>
             </a>
             <span class="flex items-center gap-2 bg-slate-900/90 px-4 py-2.5 rounded-xl border border-pink-500/40 text-pink-300 shadow-lg shadow-pink-950/20">
-                <i class="fa-solid fa-location-dot text-pink-400"></i>
-                <span th:text="${location}">Deparo, Caloocan City, Philippines</span>
-            </span>
+            <i class="fa-solid fa-location-dot text-pink-400"></i>
+            <span th:text="${location}">Deparo, Caloocan City, Philippines</span>
+        </span>
             <span class="flex items-center gap-2 bg-slate-900/90 px-4 py-2.5 rounded-xl border border-amber-500/40 text-amber-300 shadow-lg shadow-amber-950/20">
-                <i class="fa-solid fa-phone text-amber-400"></i>
-                <span th:text="${phone}">+63 961 604 9255</span>
-            </span>
+            <i class="fa-solid fa-phone text-amber-400"></i>
+            <span th:text="${phone}">+63 961 604 9255</span>
+        </span>
             <!-- Enhanced Email Me Button -->
             <a th:href="'mailto:' + ${email}"
                class="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-2.5 rounded-xl text-white font-semibold shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-200">
@@ -102,6 +103,7 @@
             </a>
         </div>
     </div>
+
 
     <!-- Portrait Cutout Container (Flush & Natural Fit) -->
     <div class="relative group flex-shrink-0 w-80 md:w-96">
