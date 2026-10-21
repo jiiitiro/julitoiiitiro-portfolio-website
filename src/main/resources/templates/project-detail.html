@@ -7,14 +7,19 @@
 
     <title th:text="|${project.name} - ${profile.name}|">Project</title>
 
+    <meta name="description" th:content="${project.overview != null ? project.overview : project.highlights[0]}">
+    <link rel="canonical" th:href="|${profile.siteUrl}/projects/${project.slug}|">
+
     <!-- Open Graph (OG) Meta Tags for Social Link Previews -->
     <meta property="og:title" th:content="|${project.name} - ${profile.name}|">
     <meta property="og:description" th:content="${project.overview != null ? project.overview : project.highlights[0]}">
     <meta property="og:image" th:content="${project.screenshots.isEmpty()}
-            ? |${profile.siteUrl}/images/portfolio_pic.png|
+            ? |${profile.siteUrl}/images/og-image.png|
             : |${profile.siteUrl}/images/projects/${project.slug}/${project.screenshots[0].file}|">
     <meta property="og:url" th:content="|${profile.siteUrl}/projects/${project.slug}|">
+    <meta property="og:site_name" th:content="${profile.name}">
     <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
@@ -35,13 +40,16 @@
         </a>
         <nav class="flex items-center gap-5 text-sm font-semibold text-slate-300">
             <a th:href="@{/#projects}" href="/#projects" class="hover:text-amber-400 transition">
-                <i class="fa-solid fa-arrow-left"></i> <span class="hidden sm:inline">All Projects</span>
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> <span class="hidden sm:inline">All Projects</span><span class="sr-only sm:hidden">All Projects</span>
             </a>
-            <a th:href="${profile.github}" href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition text-lg" title="GitHub Profile">
+            <a th:href="${profile.github}" href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition text-lg" title="GitHub Profile" aria-label="GitHub profile">
                 <i class="fa-brands fa-github"></i>
             </a>
+            <a th:if="${profile.linkedin}" th:href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition text-lg" title="LinkedIn Profile" aria-label="LinkedIn profile">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
             <a th:href="@{/resume.pdf}" href="/resume.pdf" target="_blank" class="flex items-center gap-2 border border-cyan-500/50 text-cyan-300 px-3 py-1.5 rounded-lg hover:border-cyan-400 hover:text-cyan-200 transition">
-                <i class="fa-solid fa-download"></i> <span class="hidden sm:inline">Resume</span>
+                <i class="fa-solid fa-download" aria-hidden="true"></i> <span class="hidden sm:inline">Resume</span><span class="sr-only sm:hidden">Resume</span>
             </a>
         </nav>
     </div>
@@ -198,10 +206,16 @@
 </main>
 
 <!-- Footer -->
-<footer class="bg-slate-950 py-8 border-t border-slate-800 text-center text-slate-500 text-sm">
+<footer class="bg-slate-950 py-8 border-t border-slate-800 text-center text-slate-400 text-sm">
     <div class="flex justify-center items-center gap-4 mb-3">
-        <a th:href="${profile.github}" href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-purple-400 text-xl transition">
+        <a th:href="${profile.github}" href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-purple-400 text-xl transition" aria-label="GitHub profile">
             <i class="fa-brands fa-github"></i>
+        </a>
+        <a th:if="${profile.linkedin}" th:href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-sky-400 text-xl transition" aria-label="LinkedIn profile">
+            <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a th:href="'mailto:' + ${profile.email}" class="text-slate-400 hover:text-cyan-400 text-xl transition" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
         </a>
     </div>
     <p>&copy; 2026 <th:block th:text="${profile.name}">Julito III T. Tiro</th:block>. All rights reserved.</p>

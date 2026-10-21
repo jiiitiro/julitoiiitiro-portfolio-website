@@ -17,8 +17,9 @@ portfolio:
     share-description: "Full-stack Java developer building web applications with Spring Boot, REST APIs, SQL and Docker."
     location: "Quezon City, Philippines"
     email: "julitoiiitiro@gmail.com"
-    phone: "+63 961 604 9255"
+    phone: "+63 961 604 9255"   # shown on the resume only, not on the website
     github: "https://github.com/jiiitiro"
+    linkedin: ""                # e.g. "https://www.linkedin.com/in/<you>"; links stay hidden while blank
     site-url: "https://julitoiiitiro-portfolio.up.railway.app"
 
   skills:

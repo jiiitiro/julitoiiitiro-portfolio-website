@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.julitoiiitiro.portfolio.app.content.Portfolio;
+import com.julitoiiitiro.portfolio.app.controller.PortfolioController;
 import com.julitoiiitiro.portfolio.app.resume.ResumePdfRenderer;
 
 @SpringBootTest
@@ -19,6 +20,9 @@ class ApplicationTests {
 
 	@Autowired
 	private ResumePdfRenderer resumePdfRenderer;
+
+	@Autowired
+	private PortfolioController controller;
 
 	@Test
 	void contextLoads() {
@@ -55,6 +59,16 @@ class ApplicationTests {
 		byte[] pdf = resumePdfRenderer.render(portfolio);
 
 		assertThat(new String(pdf, 0, 5, StandardCharsets.US_ASCII)).isEqualTo("%PDF-");
+	}
+
+	@Test
+	void sitemapListsEveryProjectPage() {
+		String site = portfolio.profile().siteUrl();
+
+		assertThat(controller.sitemap()).contains("<loc>" + site + "/</loc>");
+		assertThat(portfolio.projects())
+				.allSatisfy(p -> assertThat(controller.sitemap()).contains("<loc>" + site + "/projects/" + p.slug() + "</loc>"));
+		assertThat(controller.robots()).contains("Sitemap: " + site + "/sitemap.xml");
 	}
 
 }

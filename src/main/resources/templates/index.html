@@ -7,12 +7,20 @@
     <!-- Cleaned Website Title -->
     <title th:text="|${profile.name} - ${profile.title} Portfolio|"></title>
 
+    <meta name="description" th:content="${profile.shareDescription}">
+    <link rel="canonical" th:href="|${profile.siteUrl}/|">
+
     <!-- Open Graph (OG) Meta Tags for Social Link Previews -->
     <meta property="og:title" th:content="|${profile.name} - ${profile.title} Portfolio|">
     <meta property="og:description" th:content="${profile.shareDescription}">
-    <meta property="og:image" th:content="|${profile.siteUrl}/images/portfolio_pic.png|">
+    <meta property="og:image" th:content="|${profile.siteUrl}/images/og-image.png|">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" th:content="|${profile.name}, ${profile.title}|">
     <meta property="og:url" th:content="|${profile.siteUrl}/|">
+    <meta property="og:site_name" th:content="${profile.name}">
     <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,7 +42,7 @@
         </a>
 
         <!-- Mobile Hamburger Button -->
-        <button id="mobile-menu-btn" type="button" class="md:hidden text-slate-300 hover:text-fuchsia-400 text-2xl focus:outline-none transition">
+        <button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-slate-300 hover:text-fuchsia-400 text-2xl focus:outline-none transition">
             <i class="fa-solid fa-bars"></i>
         </button>
 
@@ -45,8 +53,11 @@
             <a href="#projects" class="hover:text-amber-400 transition">Projects</a>
             <a href="#experience" class="hover:text-emerald-400 transition">Experience</a>
             <a href="#certifications" class="hover:text-rose-400 transition">Certifications</a>
-            <a th:href="${profile.github}" href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition text-lg" title="GitHub Profile">
+            <a th:href="${profile.github}" href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition text-lg" title="GitHub Profile" aria-label="GitHub profile">
                 <i class="fa-brands fa-github"></i>
+            </a>
+            <a th:if="${profile.linkedin}" th:href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition text-lg" title="LinkedIn Profile" aria-label="LinkedIn profile">
+                <i class="fa-brands fa-linkedin"></i>
             </a>
             <a th:href="@{/resume.pdf}" href="/resume.pdf" target="_blank" class="flex items-center gap-2 border border-cyan-500/50 text-cyan-300 px-3 py-1.5 rounded-lg hover:border-cyan-400 hover:text-cyan-200 transition">
                 <i class="fa-solid fa-download"></i> Resume
@@ -64,8 +75,11 @@
         <a th:href="@{/resume.pdf}" href="/resume.pdf" target="_blank" class="block text-cyan-300 hover:text-cyan-200 transition">
             <i class="fa-solid fa-download"></i> Download Resume
         </a>
-        <a th:href="${profile.github}" href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="inline-block text-purple-400 text-2xl pt-2">
+        <a th:href="${profile.github}" href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="inline-block text-purple-400 text-2xl pt-2" aria-label="GitHub profile">
             <i class="fa-brands fa-github"></i>
+        </a>
+        <a th:if="${profile.linkedin}" th:href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" class="inline-block text-sky-400 text-2xl pt-2 ml-4" aria-label="LinkedIn profile">
+            <i class="fa-brands fa-linkedin"></i>
         </a>
     </div>
 </header>
@@ -97,10 +111,10 @@
             <i class="fa-solid fa-location-dot text-pink-400"></i>
             <span th:text="${profile.location}">Quezon City, Philippines</span>
         </span>
-            <span class="flex items-center gap-2 bg-slate-900/90 px-4 py-2.5 rounded-xl border border-amber-500/40 text-amber-300 shadow-lg shadow-amber-950/20">
-            <i class="fa-solid fa-phone text-amber-400"></i>
-            <span th:text="${profile.phone}">+63 961 604 9255</span>
-        </span>
+            <a th:if="${profile.linkedin}" th:href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-slate-900/90 px-4 py-2.5 rounded-xl border border-sky-500/40 text-sky-300 hover:border-sky-400 transition shadow-lg shadow-sky-950/20">
+                <i class="fa-brands fa-linkedin text-sky-400 text-lg"></i>
+                <span>LinkedIn</span>
+            </a>
             <!-- Enhanced Email Me Button -->
             <a th:href="'mailto:' + ${profile.email}"
                class="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-2.5 rounded-xl text-white font-semibold shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-200">
@@ -261,10 +275,16 @@
 </section>
 
 <!-- Footer -->
-<footer class="bg-slate-950 py-8 border-t border-slate-800 text-center text-slate-500 text-sm">
+<footer class="bg-slate-950 py-8 border-t border-slate-800 text-center text-slate-400 text-sm">
     <div class="flex justify-center items-center gap-4 mb-3">
-        <a th:href="${profile.github}" href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-purple-400 text-xl transition">
+        <a th:href="${profile.github}" href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-purple-400 text-xl transition" aria-label="GitHub profile">
             <i class="fa-brands fa-github"></i>
+        </a>
+        <a th:if="${profile.linkedin}" th:href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-sky-400 text-xl transition" aria-label="LinkedIn profile">
+            <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a th:href="'mailto:' + ${profile.email}" class="text-slate-400 hover:text-cyan-400 text-xl transition" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
         </a>
     </div>
     <p>&copy; 2026 <th:block th:text="${profile.name}">Julito III T. Tiro</th:block>. All rights reserved.</p>
@@ -281,13 +301,15 @@
     const mobileMenu = document.getElementById('mobile-menu');
 
     menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+        const open = mobileMenu.classList.toggle('hidden') === false;
+        menuBtn.setAttribute('aria-expanded', open);
     });
 
     // Close menu when a link is clicked
     document.querySelectorAll('#mobile-menu a').forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
+            menuBtn.setAttribute('aria-expanded', false);
         });
     });
 </script>

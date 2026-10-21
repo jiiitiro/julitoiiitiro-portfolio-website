@@ -6,12 +6,13 @@ My personal portfolio site: a single-page Spring Boot app that shows my skills, 
 
 ## Site sections
 
-- **About:** name, headline, short summary and contact links
+- **About:** name, headline, short summary and contact links (GitHub, LinkedIn, email; the phone number is only on the resume)
 - **Skills:** grouped into Backend, Frontend, Databases & Data, Low-Code & Automation, and DevOps & Tools
 - **Projects:** personal and capstone projects. Each card links to its own detail page at `/projects/<slug>` with an overview (or the project's README, synced live from GitHub), a screenshot carousel (arrows, thumbnails, swipe and arrow keys; click to view fullscreen), key features, tech stack, challenges, lessons learned, and GitHub / Live Demo buttons when links exist
 - **Experience:** work history
 - **Education & Certifications:** degree, plus certifications split into Completed and In Progress
 - **Resume:** an ATS-friendly resume at `/resume` (web page) and `/resume.pdf` (download), linked from the navbar and hero
+- **Sharing and search:** a 1200×630 preview image, Open Graph and Twitter tags for link previews (Messenger, LinkedIn), a meta description and canonical URL on every page, plus `/robots.txt` and a `/sitemap.xml` that lists every project page
 
 ## Tech stack
 
@@ -29,7 +30,7 @@ src/main/java/com/julitoiiitiro/portfolio/app/
 ├── PortfolioApplication.java            # Spring Boot entry point
 ├── content/Portfolio.java               # Java records bound to portfolio.yml
 ├── content/GitHubReadme.java            # Fetches, caches and renders project READMEs from GitHub
-├── controller/PortfolioController.java  # Serves /, /projects/{slug}, /resume and /resume.pdf
+├── controller/PortfolioController.java  # Serves /, /projects/{slug}, /resume, /resume.pdf, /robots.txt and /sitemap.xml
 └── resume/ResumePdfRenderer.java        # Renders resume.html to PDF
 src/main/resources/
 ├── portfolio.yml                        # ALL site and resume content lives here
@@ -40,6 +41,7 @@ src/main/resources/
 ├── templates/error/404.html             # Not-found page
 └── static/images/
     ├── portfolio_pic.png                # Profile photo
+    ├── og-image.png                     # 1200×630 link-preview image
     └── projects/<slug>/                 # Screenshots for each project
 ```
 
@@ -72,7 +74,7 @@ java -jar target/julitoiiitiro.portfolio-0.0.1-SNAPSHOT.jar
 
 All text lives in one file: `src/main/resources/portfolio.yml`. Edit it, then rebuild or redeploy, and both the website and the resume PDF update. You don't need to touch the HTML.
 
-- **Profile:** name, title, tagline, summary, contact details
+- **Profile:** name, title, tagline, summary, contact details. `phone` appears only on the resume. Set `linkedin` to your profile URL to show LinkedIn buttons in the navbar, hero, footer and resume; while it's blank they stay hidden.
 - **Skills, projects, experience, education:** add, remove or reorder list entries
 - **Certifications:** set `status: completed` or `status: in-progress`. When you finish one, change its status. Add `url: "https://..."` to link it to its certificate.
 - `color` and `icon` only affect the website's accents; the resume ignores them.
@@ -111,13 +113,17 @@ Set `readme:` to a project's README link on GitHub (`https://github.com/<user>/<
 
 To check the resume, open http://localhost:8080/resume.pdf. It should fit on 1–2 A4 pages.
 
+### Share preview image
+
+`static/images/og-image.png` is the picture shown when the site link is pasted into Messenger, LinkedIn and similar apps. It's a 1200×630 card with your name, headline and photo. If your name, headline or photo changes, replace it with a new 1200×630 image. Project pages use their first screenshot instead, when they have one. After deploying, you can check the preview with the [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/) or the [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/), which also covers Messenger and refreshes its cached copy.
+
 ## Tests
 
 ```bash
 ./mvnw test
 ```
 
-The tests check that `portfolio.yml` loads, that every project has a unique URL slug, that the resume renders to a PDF, and that GitHub READMEs are rendered safely (links resolved, unsafe HTML removed).
+The tests check that `portfolio.yml` loads, that every project has a unique URL slug, that the resume renders to a PDF, that the sitemap lists every project page, and that GitHub READMEs are rendered safely (links resolved, unsafe HTML removed).
 
 ## Contact
 

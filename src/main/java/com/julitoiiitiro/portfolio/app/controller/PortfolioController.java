@@ -1,5 +1,8 @@
 package com.julitoiiitiro.portfolio.app.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -9,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.julitoiiitiro.portfolio.app.content.GitHubReadme;
@@ -60,5 +64,25 @@ public class PortfolioController {
                 .header(HttpHeaders.CONTENT_DISPOSITION,
                         ContentDisposition.inline().filename(fileName).build().toString())
                 .body(resumePdfRenderer.render(portfolio));
+    }
+
+    @GetMapping(value = "/robots.txt", produces = MediaType.TEXT_PLAIN_VALUE)
+    @ResponseBody
+    public String robots() {
+        return "User-agent: *\nAllow: /\nSitemap: " + portfolio.profile().siteUrl() + "/sitemap.xml\n";
+    }
+
+    /** The homepage, every project page and the resume, so search engines find the project pages. */
+    @GetMapping(value = "/sitemap.xml", produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseBody
+    public String sitemap() {
+        String site = portfolio.profile().siteUrl();
+        List<String> paths = new ArrayList<>(List.of("/", "/resume"));
+        portfolio.projects().forEach(p -> paths.add("/projects/" + p.slug()));
+
+        StringBuilder xml = new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
+                .append("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n");
+        paths.forEach(path -> xml.append("  <url><loc>").append(site).append(path).append("</loc></url>\n"));
+        return xml.append("</urlset>\n").toString();
     }
 }

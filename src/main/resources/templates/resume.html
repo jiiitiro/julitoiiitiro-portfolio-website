@@ -122,7 +122,8 @@
         <th:block th:text="${profile.location}">Location</th:block> |
         <a th:href="|mailto:${profile.email}|" th:text="${profile.email}">email</a> |
         <th:block th:text="${profile.phone}">phone</th:block> |
-        <a th:href="${profile.github}" th:text="${profile.githubLabel()}">github</a>
+        <a th:href="${profile.github}" th:text="${profile.githubLabel()}">github</a><th:block th:if="${profile.linkedin}"> |
+        <a th:href="${profile.linkedin}" th:text="${profile.linkedinLabel()}">linkedin</a></th:block>
     </p>
 
     <h2>Summary</h2>

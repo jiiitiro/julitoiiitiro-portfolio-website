@@ -27,11 +27,22 @@ public record Portfolio(
             String email,
             String phone,
             String github,
+            String linkedin,
             String siteUrl) {
+
+        // LinkedIn is optional: a blank value hides its links.
+        public Profile {
+            linkedin = blankToNull(linkedin);
+        }
 
         /** GitHub URL without the scheme, e.g. "github.com/jiiitiro". */
         public String githubLabel() {
             return github.replaceFirst("^https?://", "");
+        }
+
+        /** LinkedIn URL without the scheme and "www.", e.g. "linkedin.com/in/<you>". */
+        public String linkedinLabel() {
+            return linkedin == null ? null : linkedin.replaceFirst("^https?://(www\\.)?", "").replaceFirst("/$", "");
         }
     }
 
