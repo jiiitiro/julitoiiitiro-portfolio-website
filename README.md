@@ -4,6 +4,14 @@ My personal portfolio site: a single-page Spring Boot app that shows my skills, 
 
 **Live site:** https://julitoiiitiro-portfolio.up.railway.app/
 
+## Site sections
+
+- **About:** name, headline, short summary and contact links
+- **Skills:** grouped into Backend, Frontend, Databases & Data, Low-Code & Automation, and DevOps & Tools
+- **Projects:** personal and capstone projects
+- **Experience:** work history
+- **Education & Certifications:** degree, plus certifications split into Completed and In Progress
+
 ## Tech stack
 
 - Java 17, Spring Boot 4 (Spring Web)
@@ -51,6 +59,7 @@ java -jar target/julitoiiitiro.portfolio-0.0.1-SNAPSHOT.jar
 
 - Name, title, location and contact details: `PortfolioController.java`
 - Everything else (skills, projects, experience, certifications): `src/main/resources/templates/index.html`
+- When you finish a certification, move its line from the In Progress list to the Completed list in `index.html`.
 
 ## Contact
 
