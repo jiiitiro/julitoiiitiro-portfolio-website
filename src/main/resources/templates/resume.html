@@ -145,6 +145,7 @@
     <div class="entry" th:each="project : ${portfolio.projects}">
         <h3 th:text="${project.name}">Project</h3>
         <p class="meta" th:text="${project.role} + ' | ' + ${project.period}">Role | Period</p>
+        <p class="meta" th:if="${project.github}"><a th:href="${project.github}" th:text="${#strings.replace(project.github, 'https://', '')}">github.com/...</a></p>
         <ul>
             <li th:each="highlight : ${project.highlights}" th:text="${highlight}">Highlight</li>
         </ul>

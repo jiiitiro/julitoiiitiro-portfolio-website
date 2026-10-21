@@ -175,16 +175,26 @@
     <div class="grid md:grid-cols-2 gap-8">
 
         <div th:each="project : ${portfolio.projects}"
-             th:with="c=${project.color}"
-             th:class="|bg-slate-900/80 border border-${c}-500/30 rounded-2xl p-6 hover:border-${c}-500 transition shadow-xl shadow-${c}-950/10|">
+             th:with="c=${project.color}, detailUrl=@{/projects/{slug}(slug=${project.slug})}"
+             th:class="|flex flex-col bg-slate-900/80 border border-${c}-500/30 rounded-2xl p-6 hover:border-${c}-500 transition shadow-xl shadow-${c}-950/10|">
             <div class="flex justify-between items-start mb-3">
-                <h3 class="text-2xl font-bold text-white" th:text="${project.name}">Project</h3>
+                <h3 class="text-2xl font-bold text-white">
+                    <a th:href="${detailUrl}" th:class="|hover:text-${c}-300 transition|" th:text="${project.name}">Project</a>
+                </h3>
                 <span th:class="|text-xs bg-${c}-950 text-${c}-300 border border-${c}-700/50 font-bold px-3 py-1 rounded-full|" th:text="${project.period}">2026</span>
             </div>
             <p th:class="|text-sm text-${c}-400 font-semibold mb-4|" th:text="|Role: ${project.role}|">Role</p>
             <ul class="list-disc list-inside text-slate-300 text-sm space-y-2">
                 <li th:each="highlight : ${project.highlights}" th:text="${highlight}">Highlight</li>
             </ul>
+            <div th:unless="${project.techStack.isEmpty()}" class="flex flex-wrap gap-2 mt-4">
+                <span th:each="tech : ${project.techStack}"
+                      th:class="|bg-${c}-950 text-${c}-200 border border-${c}-700/60 text-xs font-semibold px-2.5 py-0.5 rounded-md|"
+                      th:text="${tech}">Tech</span>
+            </div>
+            <a th:href="${detailUrl}" th:class="|mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold text-${c}-400 hover:text-${c}-300 transition|">
+                View details <i class="fa-solid fa-arrow-right"></i>
+            </a>
         </div>
 
     </div>

@@ -2,11 +2,14 @@ package com.julitoiiitiro.portfolio.app.controller;
 
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.julitoiiitiro.portfolio.app.content.Portfolio;
 import com.julitoiiitiro.portfolio.app.resume.ResumePdfRenderer;
@@ -26,6 +29,15 @@ public class PortfolioController {
     public String index(Model model) {
         model.addAttribute("portfolio", portfolio);
         return "index";
+    }
+
+    @GetMapping("/projects/{slug}")
+    public String project(@PathVariable String slug, Model model) {
+        Portfolio.Project project = portfolio.findProject(slug)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No project named " + slug));
+        model.addAttribute("portfolio", portfolio);
+        model.addAttribute("project", project);
+        return "project-detail";
     }
 
     @GetMapping("/resume")

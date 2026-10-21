@@ -43,8 +43,24 @@ portfolio:
       color: "emerald"
       items: ["Docker", "Git / GitLab CI/CD", "Postman", "VS Code", "IntelliJ IDEA"]
 
+  # Each project gets a detail page at /projects/<slug>.
+  # Screenshots go in src/main/resources/static/images/projects/<slug>/ (3-6 per project, under ~300 KB each).
+  # Empty fields are hidden on the detail page, so fill them in as you go.
+  #
+  #   overview:    2-4 sentences: what it is, who it's for, the problem it solves
+  #   features:    key features (the page falls back to highlights while this is empty)
+  #   tech-stack:  tags shown on the card and the detail page
+  #   challenges:  problems you hit and how you solved them
+  #   lessons:     what you learned
+  #   screenshots: - file: "login.webp"
+  #                  caption: "Login page"
+  #   github:      repo URL (shows a GitHub button)
+  #   demo:        live demo URL (shows a Live Demo button)
+  #   youtube-id:  ID of an unlisted YouTube demo video, e.g. "dQw4w9WgXcQ"
+  #   source-note: shown when there's no GitHub link, e.g. "Source code private (capstone project)"
   projects:
-    - name: "FoodieFleet"
+    - slug: "foodiefleet"
+      name: "FoodieFleet"
       period: "2026"
       role: "Full-Stack Java Developer | Personal Project"
       color: "pink"
@@ -52,28 +68,97 @@ portfolio:
         - "Built an end-to-end web application following MVC architecture using Java, Spring Boot, and Thymeleaf."
         - "Designed RESTful API endpoints and relational database schemas for dynamic workflows."
         - "Containerized application environments using Docker to ensure consistent multi-container deployments."
-    - name: "Jcasheesh"
+      overview: ""
+      features: []
+      tech-stack: ["Java", "Spring Boot", "Thymeleaf", "REST API", "Docker"]
+      challenges: []
+      lessons: []
+      screenshots: []
+      github: ""
+      demo: ""
+      youtube-id: ""
+      source-note: ""
+    - slug: "jcasheesh"
+      name: "Jcasheesh"
       period: "2026"
       role: "Full-Stack Java Developer | Personal Project"
       color: "amber"
       highlights:
         - "Developed a secure web application managing real-time user balances, transaction logging, and reporting."
-        - "Implemented authentication, session management, and role-based access control (RBAC) with Spring Security."
+        - "Secured accounts with Spring Security: BCrypt-hashed PINs, CSRF protection, session management, and lockout after 3 failed logins."
         - "Conducted API testing with Postman to validate business logic and data response structures."
-    - name: "AGREEMO: Hydroponic Automation System"
+      overview: >-
+        JCasheesh! Bank is a full-stack digital wallet web app built with Spring Boot. Users register with
+        their mobile number and a 4-digit PIN, verify their email, then cash in funds, send money to other
+        users, and get a receipt with a reference number for every transaction. The focus is on security:
+        hashed PINs, brute-force lockout, CSRF protection and safe concurrent transfers.
+      features:
+        - "Registration with mandatory email verification; unverified accounts can't log in."
+        - "Two-step cash-in flow (up to ₱10,000) with a confirmation step and a receipt showing a reference number, timestamp and updated balance."
+        - "Peer-to-peer Express Send with receiver name masking, self-transfer prevention, balance checks and a printable receipt."
+        - "Refresh-safe receipts: after each payment the app redirects to the receipt page, so refreshing never repeats the payment, and users can only open their own receipts."
+        - "Account lockout on the 3rd failed login, with an emailed PIN-reset link that expires in 15 minutes."
+        - "PINs hashed with BCrypt, CSRF tokens on every form, and session ID rotation on login."
+        - "Verification and PIN-reset emails sent in the background with Spring @Async and JavaMailSender."
+        - "Responsive Tailwind CSS glassmorphism UI with Philippine mobile number (09 prefix, 11 digits) and PIN input validation."
+      tech-stack: ["Java 17", "Spring Boot 3", "Spring Security", "Spring Data JPA", "PostgreSQL", "Thymeleaf", "Tailwind CSS", "Docker", "Postman"]
+      challenges:
+        - "Stopping two simultaneous transfers from overdrawing an account: account rows are locked with SELECT … FOR UPDATE during cash-in and transfers."
+        - "Preventing duplicate payments when a user refreshes the page: each cash-in or transfer redirects to its receipt page instead of re-submitting the form."
+        - "Blocking PIN guessing: failed attempts are counted per account in the database, and the 3rd failure locks the account and emails a reset link."
+        - "Keeping registration fast: verification emails are sent asynchronously so the user doesn't wait on the mail server."
+      lessons: []
+      screenshots:
+        - file: "login.png"
+          caption: "Sign in with mobile number and 4-digit PIN"
+        - file: "dashboard.png"
+          caption: "Dashboard with balance, quick actions and recent activity"
+        - file: "cashin.png"
+          caption: "Cash-in: enter an amount, confirm, then get a receipt"
+        - file: "transfer.png"
+          caption: "Express Send to another user's mobile number"
+        - file: "forgotpin.png"
+          caption: "PIN recovery by email"
+      github: "https://github.com/jiiitiro/JCasheeshBank"
+      demo: ""
+      youtube-id: ""
+      source-note: ""
+    - slug: "agreemo"
+      name: "AGREEMO: Hydroponic Automation System"
       period: "Aug 2024 - May 2025"
       role: "Project Manager & Backend Programmer (Capstone)"
       color: "cyan"
       highlights:
         - "Developed backend logic, database schemas, and algorithms for an IoT monitoring platform."
         - "Led a 16-member Agile development team across requirement gathering, sprint tracking, and documentation."
-    - name: "Busy Hands Enterprise Management System"
+      overview: ""
+      features: []
+      tech-stack: []
+      challenges: []
+      lessons: []
+      screenshots: []
+      github: ""
+      demo: ""
+      youtube-id: ""
+      source-note: ""
+    - slug: "busy-hands"
+      name: "Busy Hands Enterprise Management System"
       period: "Feb 2024 - May 2024"
       role: "Project Manager & Full-Stack Programmer"
       color: "emerald"
       highlights:
         - "Engineered a 5-module system covering task scheduling, client records, inventory, and reporting workflows."
         - "Structured relational schemas capable of handling high transaction volumes with strict data integrity."
+      overview: ""
+      features: []
+      tech-stack: []
+      challenges: []
+      lessons: []
+      screenshots: []
+      github: ""
+      demo: ""
+      youtube-id: ""
+      source-note: ""
 
   experience:
     - title: "Data Encoder / Graphic Designer"

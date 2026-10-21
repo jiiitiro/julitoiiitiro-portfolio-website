@@ -37,6 +37,20 @@ class ApplicationTests {
 	}
 
 	@Test
+	void everyProjectHasAUniqueSlug() {
+		assertThat(portfolio.projects()).allSatisfy(project -> assertThat(project.slug()).matches("[a-z0-9-]+"));
+		assertThat(portfolio.projects()).extracting(Portfolio.Project::slug).doesNotHaveDuplicates();
+	}
+
+	@Test
+	void findProjectMatchesSlugOnly() {
+		String slug = portfolio.projects().get(0).slug();
+
+		assertThat(portfolio.findProject(slug)).isPresent();
+		assertThat(portfolio.findProject("no-such-project")).isEmpty();
+	}
+
+	@Test
 	void resumeRendersToPdf() {
 		byte[] pdf = resumePdfRenderer.render(portfolio);
 
