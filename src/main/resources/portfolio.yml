@@ -72,12 +72,12 @@ portfolio:
         - "Containerized application environments using Docker to ensure consistent multi-container deployments."
       overview: ""
       features: []
-      tech-stack: ["Java", "Spring Boot", "Thymeleaf", "REST API", "Docker"]
+      tech-stack: ["Java", "Spring Boot", "Spring Security", "Thymeleaf", "Tailwind CSS", "PostgreSQL", "REST API", "Docker"]
       challenges: []
       lessons: []
       screenshots: []
-      github: ""
-      readme: ""
+      github: "https://github.com/jiiitiro/foodie-fleet-app"
+      readme: "https://github.com/jiiitiro/foodie-fleet-app/blob/main/README.md"
       demo: ""
       youtube-id: ""
       source-note: ""
