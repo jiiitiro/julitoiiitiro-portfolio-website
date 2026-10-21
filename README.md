@@ -43,6 +43,8 @@ src/main/resources/
     ├── portfolio_pic.png                # Profile photo
     ├── og-image.png                     # 1200×630 link-preview image
     └── projects/<slug>/                 # Screenshots for each project
+.github/workflows/site-check.yml          # Monthly check of the live site
+scripts/check-site.sh                     # Checks pages, links and the resume PDF
 ```
 
 ## Run locally
@@ -124,6 +126,34 @@ To check the resume, open http://localhost:8080/resume.pdf. It should fit on 1�
 ```
 
 The tests check that `portfolio.yml` loads, that every project has a unique URL slug, that the resume renders to a PDF, that the sitemap lists every project page, and that GitHub READMEs are rendered safely (links resolved, unsafe HTML removed).
+
+## Keeping it current
+
+The site and the resume PDF both come from `portfolio.yml`, so most updates are a one-file edit followed by a push to `main`, which Railway deploys.
+
+**When you finish a certificate**
+1. Change its `status` to `completed` and add `url:` with the certificate link.
+2. Push, then open `/resume.pdf` on the live site to confirm it moved to Completed.
+
+**When you finish a project**
+1. Add it under `projects` with a new `slug`, and put screenshots in `static/images/projects/<slug>/`.
+2. If the repo is public, set `github:` and `readme:` so the page follows its README.
+3. Push, then open `/projects/<slug>` and check the card on the homepage.
+
+**Every month (automatic)**
+
+The [Monthly site check](.github/workflows/site-check.yml) workflow runs on the 1st of every month. It loads every page in the sitemap, checks every link and image on them (including GitHub repos and live demos), and confirms the resume PDF generates. GitHub emails you if a run fails; open the run in the Actions tab to see which URL broke. You can also start it any time from the Actions tab with **Run workflow**, or run the same check yourself:
+
+```bash
+scripts/check-site.sh                          # the live site
+scripts/check-site.sh http://localhost:8080    # a local copy
+```
+
+GitHub pauses scheduled workflows in a repo with no commits for 60 days. If that happens, re-enable it from the Actions tab.
+
+**Before each job application**
+
+Tailor the `summary` (and, if useful, the order of `skills` and `projects`) to the role, then run the app locally and download http://localhost:8080/resume.pdf. That gives you a tailored PDF without changing the live site. Keep the live `summary` general.
 
 ## Contact
 

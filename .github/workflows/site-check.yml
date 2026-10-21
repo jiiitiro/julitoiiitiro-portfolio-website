@@ -1,0 +1,16 @@
+name: Monthly site check
+
+# Checks every page, link and image on the live site, and that the resume PDF generates.
+# A failed run emails the repo owner. Run it by hand from the Actions tab with "Run workflow".
+on:
+  schedule:
+    - cron: "0 1 1 * *" # 1st of every month, 09:00 Philippine time
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check pages, links and resume PDF
+        run: bash scripts/check-site.sh
