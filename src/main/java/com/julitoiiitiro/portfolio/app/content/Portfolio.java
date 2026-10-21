@@ -52,6 +52,7 @@ public record Portfolio(
             List<String> lessons,
             List<Screenshot> screenshots,
             String github,
+            String readme,
             String demo,
             String youtubeId,
             String sourceNote) {
@@ -67,6 +68,7 @@ public record Portfolio(
             screenshots = orEmpty(screenshots);
             overview = blankToNull(overview);
             github = blankToNull(github);
+            readme = blankToNull(readme);
             demo = blankToNull(demo);
             youtubeId = blankToNull(youtubeId);
             sourceNote = blankToNull(sourceNote);

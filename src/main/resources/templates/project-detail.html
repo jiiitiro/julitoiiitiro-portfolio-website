@@ -17,7 +17,7 @@
     <meta property="og:type" content="website">
 
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -78,8 +78,8 @@
         </div>
     </section>
 
-    <!-- Overview -->
-    <section th:if="${project.overview}">
+    <!-- Overview (hidden when the live README is shown) -->
+    <section th:if="${project.overview != null and readmeHtml == null}">
         <h2 class="text-2xl font-extrabold text-white mb-4">Overview</h2>
         <p class="text-slate-300 text-base md:text-lg" th:text="${project.overview}">Overview</p>
     </section>
@@ -140,8 +140,21 @@
         </div>
     </section>
 
-    <!-- Key features -->
-    <section>
+    <!-- Live README from GitHub (replaces overview and key features) -->
+    <section th:if="${readmeHtml}">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <h2 class="text-2xl font-extrabold text-white">About This Project</h2>
+            <a th:href="${project.readme}" target="_blank" rel="noopener noreferrer"
+               class="flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-slate-200 transition">
+                <i class="fa-brands fa-github"></i> Synced from the README on GitHub
+            </a>
+        </div>
+        <article th:class="|bg-slate-900/60 border border-slate-800 rounded-2xl p-6 md:p-8 prose prose-invert prose-slate max-w-none prose-headings:font-extrabold prose-a:text-${c}-300 prose-code:text-${c}-200 prose-code:before:content-none prose-code:after:content-none prose-pre:bg-slate-950 prose-img:rounded-lg prose-table:text-sm|"
+                 th:utext="${readmeHtml}">README</article>
+    </section>
+
+    <!-- Key features (hidden when the live README is shown) -->
+    <section th:unless="${readmeHtml}">
         <h2 class="text-2xl font-extrabold text-white mb-4">Key Features</h2>
         <ul class="space-y-3 text-slate-300">
             <li th:each="feature : ${project.keyFeatures()}" class="flex items-start gap-3">

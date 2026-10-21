@@ -55,6 +55,8 @@ portfolio:
   #   screenshots: - file: "login.webp"
   #                  caption: "Login page"
   #   github:      repo URL (shows a GitHub button)
+  #   readme:      GitHub README link (https://github.com/<you>/<repo>/blob/main/README.md). When set, the page
+  #                shows the live README instead of overview and features, refreshed every 10 minutes.
   #   demo:        live demo URL (shows a Live Demo button)
   #   youtube-id:  ID of an unlisted YouTube demo video, e.g. "dQw4w9WgXcQ"
   #   source-note: shown when there's no GitHub link, e.g. "Source code private (capstone project)"
@@ -75,6 +77,7 @@ portfolio:
       lessons: []
       screenshots: []
       github: ""
+      readme: ""
       demo: ""
       youtube-id: ""
       source-note: ""
@@ -120,6 +123,7 @@ portfolio:
         - file: "forgotpin.png"
           caption: "PIN recovery by email"
       github: "https://github.com/jiiitiro/JCasheeshBank"
+      readme: "https://github.com/jiiitiro/JCasheeshBank/blob/main/README.md"
       demo: ""
       youtube-id: ""
       source-note: ""
@@ -138,6 +142,7 @@ portfolio:
       lessons: []
       screenshots: []
       github: ""
+      readme: ""
       demo: ""
       youtube-id: ""
       source-note: ""
@@ -156,6 +161,7 @@ portfolio:
       lessons: []
       screenshots: []
       github: ""
+      readme: ""
       demo: ""
       youtube-id: ""
       source-note: ""

@@ -8,7 +8,7 @@ My personal portfolio site: a single-page Spring Boot app that shows my skills, 
 
 - **About:** name, headline, short summary and contact links
 - **Skills:** grouped into Backend, Frontend, Databases & Data, Low-Code & Automation, and DevOps & Tools
-- **Projects:** personal and capstone projects. Each card links to its own detail page at `/projects/<slug>` with an overview, a screenshot carousel (arrows, thumbnails, swipe and arrow keys; click to view fullscreen), key features, tech stack, challenges, lessons learned, and GitHub / Live Demo buttons when links exist
+- **Projects:** personal and capstone projects. Each card links to its own detail page at `/projects/<slug>` with an overview (or the project's README, synced live from GitHub), a screenshot carousel (arrows, thumbnails, swipe and arrow keys; click to view fullscreen), key features, tech stack, challenges, lessons learned, and GitHub / Live Demo buttons when links exist
 - **Experience:** work history
 - **Education & Certifications:** degree, plus certifications split into Completed and In Progress
 - **Resume:** an ATS-friendly resume at `/resume` (web page) and `/resume.pdf` (download), linked from the navbar and hero
@@ -19,6 +19,7 @@ My personal portfolio site: a single-page Spring Boot app that shows my skills, 
 - Thymeleaf for server-side templates
 - Tailwind CSS and Font Awesome (loaded from CDN)
 - OpenHTMLtoPDF and jsoup to turn the resume template into a PDF
+- commonmark-java to render project READMEs from GitHub, sanitized with jsoup
 - Docker, deployed on Railway
 
 ## Project structure
@@ -27,7 +28,8 @@ My personal portfolio site: a single-page Spring Boot app that shows my skills, 
 src/main/java/com/julitoiiitiro/portfolio/app/
 ├── PortfolioApplication.java            # Spring Boot entry point
 ├── content/Portfolio.java               # Java records bound to portfolio.yml
-├── controller/PortfolioController.java  # Serves /, /resume and /resume.pdf
+├── content/GitHubReadme.java            # Fetches, caches and renders project READMEs from GitHub
+├── controller/PortfolioController.java  # Serves /, /projects/{slug}, /resume and /resume.pdf
 └── resume/ResumePdfRenderer.java        # Renders resume.html to PDF
 src/main/resources/
 ├── portfolio.yml                        # ALL site and resume content lives here
@@ -91,12 +93,21 @@ All text lives in one file: `src/main/resources/portfolio.yml`. Edit it, then re
         - file: "dashboard.webp"
           caption: "Dashboard"
       github: "https://github.com/jiiitiro/<repo>"
+      readme: "https://github.com/jiiitiro/<repo>/blob/main/README.md"   # optional, see below
       demo: "https://<app>.up.railway.app"
       youtube-id: ""            # unlisted demo video ID (optional)
       source-note: ""           # e.g. "Source code private (capstone project)" when there's no GitHub link
 ```
 
 Screenshots appear in the carousel in the order listed. Empty fields are hidden on the page. Until `features` is filled in, the page shows the card's `highlights` as key features. A project's GitHub link also appears on the resume.
+
+### Live README from GitHub
+
+Set `readme:` to a project's README link on GitHub (`https://github.com/<user>/<repo>/blob/<branch>/README.md`) and its detail page shows that README, converted from Markdown, in place of `overview` and `features`. When you push a README change to that branch, the portfolio picks it up within 10 minutes, with no redeploy needed.
+
+- Relative links and images in the README are pointed at GitHub, and unsafe HTML is stripped.
+- If GitHub can't be reached, the page shows the last copy it fetched, or the `overview` and `features` from `portfolio.yml` if it has none yet. Keep those filled in as a fallback.
+- The link must point at the branch visitors should see (usually `main`). Changes pushed to other branches don't show up.
 
 To check the resume, open http://localhost:8080/resume.pdf. It should fit on 1–2 A4 pages.
 
@@ -106,7 +117,7 @@ To check the resume, open http://localhost:8080/resume.pdf. It should fit on 1�
 ./mvnw test
 ```
 
-The tests check that `portfolio.yml` loads, that every project has a unique URL slug, and that the resume renders to a PDF.
+The tests check that `portfolio.yml` loads, that every project has a unique URL slug, that the resume renders to a PDF, and that GitHub READMEs are rendered safely (links resolved, unsafe HTML removed).
 
 ## Contact
 
