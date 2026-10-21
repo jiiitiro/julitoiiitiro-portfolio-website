@@ -21,6 +21,7 @@ portfolio:
     github: "https://github.com/jiiitiro"
     linkedin: ""                # e.g. "https://www.linkedin.com/in/<you>"; links stay hidden while blank
     site-url: "https://julitoiiitiro-portfolio.up.railway.app"
+    source-code: "https://github.com/jiiitiro/julitoiiitiro-portfolio-website"   # "View source" link in the footer
 
   skills:
     - name: "Backend Development"

@@ -44,6 +44,7 @@ src/main/resources/
     ├── og-image.png                     # 1200×630 link-preview image
     └── projects/<slug>/                 # Screenshots for each project
 .github/workflows/site-check.yml          # Monthly check of the live site
+LICENSE                                   # MIT
 scripts/check-site.sh                     # Checks pages, links and the resume PDF
 ```
 
@@ -76,14 +77,14 @@ java -jar target/julitoiiitiro.portfolio-0.0.1-SNAPSHOT.jar
 
 All text lives in one file: `src/main/resources/portfolio.yml`. Edit it, then rebuild or redeploy, and both the website and the resume PDF update. You don't need to touch the HTML.
 
-- **Profile:** name, title, tagline, summary, contact details. `phone` appears only on the resume. Set `linkedin` to your profile URL to show LinkedIn buttons in the navbar, hero, footer and resume; while it's blank they stay hidden.
+- **Profile:** name, title, tagline, summary, contact details, and `source-code` (the repo link in the footer; blank hides it). `phone` appears only on the resume. Set `linkedin` to your profile URL to show LinkedIn buttons in the navbar, hero, footer and resume; while it's blank they stay hidden.
 - **Skills, projects, experience, education:** add, remove or reorder list entries
 - **Certifications:** set `status: completed` or `status: in-progress`. When you finish one, change its status. Add `url: "https://..."` to link it to its certificate.
 - `color` and `icon` only affect the website's accents; the resume ignores them.
 
 ### Adding project details and screenshots
 
-1. Take 3–6 screenshots (login, dashboard, main features) and compress each to under ~300 KB (WebP or PNG).
+1. Take 3–6 screenshots (login, dashboard, main features) and compress each to under ~300 KB (WebP or PNG). Use test accounts, and check that no real phone numbers, emails, names or balances show: screenshots are public on the site and stay in the git history even after you replace them.
 2. Put them in `src/main/resources/static/images/projects/<slug>/`, e.g. `static/images/projects/foodiefleet/dashboard.webp`.
 3. In `portfolio.yml`, fill in that project's fields:
 
@@ -154,6 +155,15 @@ GitHub pauses scheduled workflows in a repo with no commits for 60 days. If that
 **Before each job application**
 
 Tailor the `summary` (and, if useful, the order of `skills` and `projects`) to the role, then run the app locally and download http://localhost:8080/resume.pdf. That gives you a tailored PDF without changing the live site. Keep the live `summary` general.
+
+## Use this as your own portfolio
+
+The code is MIT licensed (see [LICENSE](LICENSE)), so you're welcome to fork it. My photo, resume and other personal content in `portfolio.yml`, `static/images/` and the share image aren't part of that; replace them with your own:
+
+1. Fork the repo and replace everything in `src/main/resources/portfolio.yml` with your details, including `site-url`, `github` and `source-code`.
+2. Replace `static/images/portfolio_pic.png`, `static/images/og-image.png` (1200×630) and the folders under `static/images/projects/`.
+3. Change the default site URL in `scripts/check-site.sh`.
+4. Run `./mvnw test`, then deploy (the Dockerfile works on Railway and most container hosts).
 
 ## Contact
 

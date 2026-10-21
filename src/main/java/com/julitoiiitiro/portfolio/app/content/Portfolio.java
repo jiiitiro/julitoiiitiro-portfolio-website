@@ -28,11 +28,13 @@ public record Portfolio(
             String phone,
             String github,
             String linkedin,
-            String siteUrl) {
+            String siteUrl,
+            String sourceCode) {
 
-        // LinkedIn is optional: a blank value hides its links.
+        // LinkedIn and the source-code link are optional: a blank value hides them.
         public Profile {
             linkedin = blankToNull(linkedin);
+            sourceCode = blankToNull(sourceCode);
         }
 
         /** GitHub URL without the scheme, e.g. "github.com/jiiitiro". */

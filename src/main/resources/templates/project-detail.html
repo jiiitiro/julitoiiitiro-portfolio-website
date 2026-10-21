@@ -218,7 +218,13 @@
             <i class="fa-solid fa-envelope"></i>
         </a>
     </div>
-    <p>&copy; 2026 <th:block th:text="${profile.name}">Julito III T. Tiro</th:block>. All rights reserved.</p>
+    <p>&copy; 2026 <th:block th:text="${profile.name}">Julito III T. Tiro</th:block>.</p>
+    <p th:if="${profile.sourceCode}" class="mt-2">
+        Built with Spring Boot and Thymeleaf. The code is open source (MIT):
+        <a th:href="${profile.sourceCode}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-slate-300 underline underline-offset-2 hover:text-purple-400 transition">
+            <i class="fa-brands fa-github" aria-hidden="true"></i> view it on GitHub
+        </a>
+    </p>
 </footer>
 
 <!-- Lightbox for enlarged screenshots -->
