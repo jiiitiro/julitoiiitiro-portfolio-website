@@ -64,6 +64,7 @@ public record Portfolio(
             List<String> challenges,
             List<String> lessons,
             List<Screenshot> screenshots,
+            List<Document> documents,
             String github,
             String readme,
             String demo,
@@ -79,6 +80,7 @@ public record Portfolio(
             challenges = orEmpty(challenges);
             lessons = orEmpty(lessons);
             screenshots = orEmpty(screenshots);
+            documents = orEmpty(documents);
             overview = blankToNull(overview);
             github = blankToNull(github);
             readme = blankToNull(readme);
@@ -94,6 +96,10 @@ public record Portfolio(
     }
 
     public record Screenshot(String file, String caption) {
+    }
+
+    /** A downloadable file (e.g. a PDF user manual) stored next to the project's screenshots. */
+    public record Document(String file, String label) {
     }
 
     public record Experience(String title, String organization, String period, String color, String description) {

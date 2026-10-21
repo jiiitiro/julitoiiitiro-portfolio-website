@@ -56,6 +56,8 @@ portfolio:
   #   lessons:     what you learned
   #   screenshots: - file: "login.webp"
   #                  caption: "Login page"
+  #   documents:   - file: "user-manual.pdf"      (stored next to the screenshots; shows a download button)
+  #                  label: "User Manual (PDF)"
   #   github:      repo URL (shows a GitHub button)
   #   readme:      GitHub README link (https://github.com/<you>/<repo>/blob/main/README.md). When set, the page
   #                shows the live README instead of overview and features, refreshed every 10 minutes.
@@ -135,19 +137,60 @@ portfolio:
       role: "Project Manager & Backend Programmer (Capstone)"
       color: "cyan"
       highlights:
-        - "Developed backend logic, database schemas, and algorithms for an IoT monitoring platform."
+        - "Built the backend REST API with Python, Flask and PostgreSQL, including the database schema and business logic behind the team's Flutter mobile app and web dashboard."
         - "Led a 16-member Agile development team across requirement gathering, sprint tracking, and documentation."
-      overview: ""
-      features: []
-      tech-stack: []
-      challenges: []
+        - "Presented the project at the Quezon City University 2025 Student Research Conference (Synergy 2025)."
+      overview: >-
+        AGREEMO is a solar-powered, IoT-controlled hydroponic greenhouse for growing lettuce, built with
+        Sunnyville Community Model Farm, an urban farm in Quezon City that monitored its water and plants by hand.
+        ESP32 microcontrollers read pH, nutrient (TDS), temperature, humidity and water-level sensors and drive
+        the misting, cooling and nutrient-dosing systems. Farmers monitor and control the greenhouse from an
+        Android app, and the farm manager tracks harvests, inventory and users from a web dashboard, both backed by
+        a Python Flask REST API and a PostgreSQL database. We tested it
+        with 28 farmers and the farm manager, and it scored 3.9 to 4.1 out of 5 across the ISO 25010 quality criteria.
+        My part: I was the project manager, built the backend API and database, and helped build the greenhouse
+        hardware; teammates built the Flutter mobile app and the web dashboard.
+      features:
+        - "Real-time monitoring of pH, TDS, water temperature, humidity and tank water levels from sensors on ESP32 microcontrollers."
+        - "Automatic heat control: misting and the reservoir cooling system turn on when the greenhouse reaches 30°C and off once it cools down."
+        - "Automatic nutrient controller that doses pH up/down and Solutions A & B to keep lettuce within pH 5.5–6.5 and 560–840 ppm TDS."
+        - "AI growth monitoring: a YOLOv8 and OpenCV model detects lettuce growth stages from a camera feed (78% accuracy) and notifies farmers when plants are ready to harvest."
+        - "Push alerts through OneSignal when water or solution levels get low."
+        - "Android app for farmers: live readings, growth charts, seedling tracking, and manual control of pumps, valves, misting and exhaust fans."
+        - "Web dashboard for the farm manager: harvest and rejection reports, inventory, charts, activity logs, and user management with account lockout after 3 failed logins."
+        - "Runs on a solar panel and battery and collects rainwater for irrigation, so the greenhouse can operate on its own."
+      tech-stack: ["Python", "Flask", "REST API", "PostgreSQL", "Flutter", "Dart", "ESP32", "IoT Sensors", "YOLOv8", "OpenCV", "OneSignal", "Render", "Figma", "Agile"]
+      challenges:
+        - "Keeping lettuce in its ideal range without someone checking by hand: the system compares sensor readings against target pH, TDS and temperature levels and doses or cools automatically, and measures nutrient absorption every two hours."
+        - "Running off-grid: a solar panel and rechargeable battery power the ESP32, lights, misting and dosing pumps, and a rainwater collection system feeds the reservoir."
+        - "Coordinating a 16-member team across hardware, mobile, web and documentation using Agile sprints, from requirement gathering at the farm to final testing with its farmers."
+        - "Known limits from user testing: the app needs a stable internet connection and doesn't support older Android versions, so offline mode and wider compatibility are the next improvements."
       lessons: []
-      screenshots: []
+      screenshots:
+        - file: "web_app.png"
+          caption: "Web dashboard: activity logs with filters for the farm manager"
+        - file: "mobile_app.png"
+          caption: "Android app: water monitoring, growth charts, AI harvest detection and solution levels"
+        - file: "lettuce_growth.jpg"
+          caption: "From seedlings to lettuce grown in the prototype"
+        - file: "prototype_demo3.jpg"
+          caption: "The team with the greenhouse prototype and nutrient dosing system"
+        - file: "prototype_demo2.jpg"
+          caption: "Wiring the cooling system on site"
+        - file: "prototype_demo.jpg"
+          caption: "Demo with the farmers at Sunnyville Community Model Farm"
+        - file: "synergy_presentation.jpg"
+          caption: "Research poster at the QCU 2025 Student Research Conference (Synergy 2025)"
+        - file: "synergy_presentation2.jpg"
+          caption: "Presenting AGREEMO at Synergy 2025"
+      documents:
+        - file: "AGREEMO-USERMANUAL.pdf"
+          label: "User Manual (PDF)"
       github: ""
       readme: ""
       demo: ""
       youtube-id: ""
-      source-note: ""
+      source-note: "Capstone project: source code not public"
     - slug: "busy-hands"
       name: "Busy Hands Enterprise Management System"
       period: "Feb 2024 - May 2024"

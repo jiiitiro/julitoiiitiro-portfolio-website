@@ -70,7 +70,7 @@
                   th:text="${tech}">Tech</span>
         </div>
 
-        <!-- GitHub and Live Demo buttons, shown only when a link exists -->
+        <!-- GitHub, Live Demo and document buttons, shown only when they exist -->
         <div class="flex flex-wrap items-center gap-4 mt-6 text-sm font-semibold">
             <a th:if="${project.github}" th:href="${project.github}" target="_blank" rel="noopener noreferrer"
                class="flex items-center gap-2 bg-slate-900/90 px-5 py-2.5 rounded-xl border border-purple-500/40 text-purple-300 hover:border-purple-400 transition shadow-lg shadow-purple-950/20">
@@ -79,6 +79,11 @@
             <a th:if="${project.demo}" th:href="${project.demo}" target="_blank" rel="noopener noreferrer"
                class="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-2.5 rounded-xl text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-200">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+            </a>
+            <a th:each="doc : ${project.documents}"
+               th:href="@{/images/projects/{slug}/{file}(slug=${project.slug},file=${doc.file})}" target="_blank"
+               th:class="|flex items-center gap-2 bg-slate-900/90 px-5 py-2.5 rounded-xl border border-${c}-500/40 text-${c}-300 hover:border-${c}-400 transition shadow-lg shadow-${c}-950/20|">
+                <i class="fa-solid fa-file-pdf text-lg"></i> <th:block th:text="${doc.label}">Document</th:block>
             </a>
             <span th:if="${project.github == null and project.sourceNote != null}" class="flex items-center gap-2 text-slate-400">
                 <i class="fa-solid fa-lock"></i> <th:block th:text="${project.sourceNote}">Source code private</th:block>

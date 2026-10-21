@@ -8,7 +8,7 @@ My personal portfolio site: a single-page Spring Boot app that shows my skills, 
 
 - **About:** name, headline, short summary and contact links (GitHub, LinkedIn, email; the phone number is only on the resume)
 - **Skills:** grouped into Backend, Frontend, Databases & Data, Low-Code & Automation, and DevOps & Tools
-- **Projects:** personal and capstone projects. Each card links to its own detail page at `/projects/<slug>` with an overview (or the project's README, synced live from GitHub), a screenshot carousel (arrows, thumbnails, swipe and arrow keys; click to view fullscreen), key features, tech stack, challenges, lessons learned, and GitHub / Live Demo buttons when links exist
+- **Projects:** personal and capstone projects. Each card links to its own detail page at `/projects/<slug>` with an overview (or the project's README, synced live from GitHub), a screenshot carousel (arrows, thumbnails, swipe and arrow keys; click to view fullscreen), key features, tech stack, challenges, lessons learned, and GitHub / Live Demo / document download (e.g. a PDF user manual) buttons when they exist
 - **Experience:** work history
 - **Education & Certifications:** degree, plus certifications split into Completed and In Progress
 - **Resume:** an ATS-friendly resume at `/resume` (web page) and `/resume.pdf` (download), linked from the navbar and hero
@@ -97,6 +97,9 @@ All text lives in one file: `src/main/resources/portfolio.yml`. Edit it, then re
       screenshots:
         - file: "dashboard.webp"
           caption: "Dashboard"
+      documents:                # optional downloads, stored next to the screenshots
+        - file: "user-manual.pdf"
+          label: "User Manual (PDF)"
       github: "https://github.com/jiiitiro/<repo>"
       readme: "https://github.com/jiiitiro/<repo>/blob/main/README.md"   # optional, see below
       demo: "https://<app>.up.railway.app"
@@ -104,7 +107,7 @@ All text lives in one file: `src/main/resources/portfolio.yml`. Edit it, then re
       source-note: ""           # e.g. "Source code private (capstone project)" when there's no GitHub link
 ```
 
-Screenshots appear in the carousel in the order listed. Empty fields are hidden on the page. Until `features` is filled in, the page shows the card's `highlights` as key features. A project's GitHub link also appears on the resume.
+Screenshots appear in the carousel in the order listed. Each entry under `documents` adds a download button next to GitHub / Live Demo. Before adding a PDF, check it for other people's personal data (a thesis appendix with team CVs, for example, has phone numbers and addresses); everything in `static/` is public. Empty fields are hidden on the page. Until `features` is filled in, the page shows the card's `highlights` as key features. A project's GitHub link also appears on the resume.
 
 ### Live README from GitHub
 
