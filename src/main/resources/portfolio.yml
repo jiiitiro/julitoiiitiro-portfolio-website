@@ -1,0 +1,137 @@
+# Single source of content for the website (/) and the resume (/resume, /resume.pdf).
+# Edit this file, then redeploy: both the site and the PDF update.
+#
+# color: a Tailwind color name used for the item's accent on the website
+#        (fuchsia, pink, rose, amber, yellow, emerald, cyan, blue, purple). The resume ignores it.
+# icon:  a Font Awesome class for the website. The resume ignores it.
+
+portfolio:
+  profile:
+    name: "Julito III T. Tiro"
+    title: "Full-Stack Java Developer"
+    tagline: "Java developer building Spring Boot apps"
+    summary: >-
+      Full-stack Java developer and BSIT graduate who builds web applications with Spring Boot,
+      Thymeleaf, REST APIs, SQL databases and Docker. I also build low-code business apps and
+      dashboards with Power Apps, Power Automate and Power BI.
+    share-description: "Full-stack Java developer building web applications with Spring Boot, REST APIs, SQL and Docker."
+    location: "Quezon City, Philippines"
+    email: "julitoiiitiro@gmail.com"
+    phone: "+63 961 604 9255"
+    github: "https://github.com/jiiitiro"
+    site-url: "https://julitoiiitiro-portfolio.up.railway.app"
+
+  skills:
+    - name: "Backend Development"
+      icon: "fa-server"
+      color: "fuchsia"
+      items: ["Java (Core, OOP)", "Spring Boot 3", "Spring JPA", "Spring Security", "RESTful APIs", "Python", "FastAPI / Flask", "C# / .NET"]
+    - name: "Frontend Development"
+      icon: "fa-laptop-code"
+      color: "amber"
+      items: ["Thymeleaf", "HTML & CSS", "Tailwind CSS"]
+    - name: "Databases & Data"
+      icon: "fa-database"
+      color: "cyan"
+      items: ["PostgreSQL", "MySQL", "MSSQL", "Oracle", "SQL Optimization", "Schema Design", "Power BI", "Data Visualization"]
+    - name: "Low-Code & Automation"
+      icon: "fa-bolt"
+      color: "purple"
+      items: ["Power Apps", "Power Automate", "Dataverse"]
+    - name: "DevOps & Tools"
+      icon: "fa-gears"
+      color: "emerald"
+      items: ["Docker", "Git / GitLab CI/CD", "Postman", "VS Code", "IntelliJ IDEA"]
+
+  projects:
+    - name: "FoodieFleet"
+      period: "2026"
+      role: "Full-Stack Java Developer | Personal Project"
+      color: "pink"
+      highlights:
+        - "Built an end-to-end web application following MVC architecture using Java, Spring Boot, and Thymeleaf."
+        - "Designed RESTful API endpoints and relational database schemas for dynamic workflows."
+        - "Containerized application environments using Docker to ensure consistent multi-container deployments."
+    - name: "Jcasheesh"
+      period: "2026"
+      role: "Full-Stack Java Developer | Personal Project"
+      color: "amber"
+      highlights:
+        - "Developed a secure web application managing real-time user balances, transaction logging, and reporting."
+        - "Implemented authentication, session management, and role-based access control (RBAC) with Spring Security."
+        - "Conducted API testing with Postman to validate business logic and data response structures."
+    - name: "AGREEMO: Hydroponic Automation System"
+      period: "Aug 2024 - May 2025"
+      role: "Project Manager & Backend Programmer (Capstone)"
+      color: "cyan"
+      highlights:
+        - "Developed backend logic, database schemas, and algorithms for an IoT monitoring platform."
+        - "Led a 16-member Agile development team across requirement gathering, sprint tracking, and documentation."
+    - name: "Busy Hands Enterprise Management System"
+      period: "Feb 2024 - May 2024"
+      role: "Project Manager & Full-Stack Programmer"
+      color: "emerald"
+      highlights:
+        - "Engineered a 5-module system covering task scheduling, client records, inventory, and reporting workflows."
+        - "Structured relational schemas capable of handling high transaction volumes with strict data integrity."
+
+  experience:
+    - title: "Data Encoder / Graphic Designer"
+      organization: "Office of the Secretary to the Mayor, Quezon City Government"
+      period: "Jul 2025 - Sept 2026"
+      color: "fuchsia"
+      description: "Managed data entry, record auditing, database integrity across local government repositories, and designed public communication media."
+    - title: "Graphic Designer, Researcher & Digital Page Admin"
+      organization: "Serbisyo sa Bayan Partylist (SBP)"
+      period: "Jun 2024 - Jun 2025"
+      color: "cyan"
+      description: "Managed digital channels, compiled leadership reports, and produced public campaign collateral and process guides."
+    - title: "Computer & Area Technician"
+      organization: "Cdr-King"
+      period: "Feb 2012 - Dec 2015"
+      color: "amber"
+      description: "Diagnosed and resolved hardware, software, and peripheral incidents within target service SLAs."
+
+  education:
+    - degree: "Bachelor of Science in Information Technology (BSIT)"
+      school: "Quezon City University"
+      period: "Graduated 2025"
+
+  # status: completed or in-progress. Add url: "https://..." to link a certificate to its proof.
+  certifications:
+    - name: "Master Java, Spring 6, Spring Boot 3, Spring Security, Docker, & Microservices"
+      provider: "Udemy"
+      status: completed
+      color: "cyan"
+    - name: "Mastering REST API with FastAPI & Flask"
+      provider: "Udemy"
+      status: completed
+      color: "emerald"
+    - name: "100 Days of Code: The Complete Python Pro Bootcamp"
+      provider: "Udemy"
+      status: completed
+      color: "rose"
+    - name: "Canvas Apps, Dataverse & Model-Driven Apps in Power Apps"
+      provider: "Microsoft Learn"
+      status: completed
+      color: "purple"
+    - name: "NSE 1 Network Security Associate"
+      provider: "Fortinet"
+      status: completed
+      color: "amber"
+    - name: "Ethical Hacking & Cybersecurity Foundations"
+      provider: "Upskill I.T. Workshop / Udemy"
+      status: completed
+      color: "blue"
+    - name: "Java NC III"
+      provider: "Technical Education and Skills Development Authority (TESDA)"
+      status: in-progress
+      color: "fuchsia"
+    - name: "Dataverse, Canvas & Model-Driven Power Apps and Automate"
+      provider: "Udemy"
+      status: in-progress
+      color: "pink"
+    - name: "Master Power BI Desktop for Data Prep, Data Analysis, Data Visualization & Dashboard Design"
+      provider: "Udemy"
+      status: in-progress
+      color: "yellow"

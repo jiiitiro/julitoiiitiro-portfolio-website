@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:with="profile=${portfolio.profile}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Cleaned Website Title -->
-    <title th:text="|${name} - ${title} Portfolio|"></title>
+    <title th:text="|${profile.name} - ${profile.title} Portfolio|"></title>
 
     <!-- Open Graph (OG) Meta Tags for Social Link Previews -->
-    <meta property="og:title" content="Julito III T. Tiro - Full-Stack Java Developer Portfolio">
-    <meta property="og:description" content="Full-stack Java developer building web applications with Spring Boot, REST APIs, SQL and Docker.">
-    <meta property="og:image" content="https://julitoiiitiro-portfolio.up.railway.app/images/portfolio_pic.png">
-    <meta property="og:url" content="https://julitoiiitiro-portfolio.up.railway.app/">
+    <meta property="og:title" th:content="|${profile.name} - ${profile.title} Portfolio|">
+    <meta property="og:description" th:content="${profile.shareDescription}">
+    <meta property="og:image" th:content="|${profile.siteUrl}/images/portfolio_pic.png|">
+    <meta property="og:url" th:content="|${profile.siteUrl}/|">
     <meta property="og:type" content="website">
 
     <!-- Tailwind CSS CDN -->
@@ -29,7 +29,7 @@
 <!-- Radiant Header Navigation with Mobile Hamburger Menu -->
 <header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-fuchsia-500/20">
     <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="#" class="text-xl font-extrabold bg-gradient-to-r from-fuchsia-400 via-pink-400 to-amber-300 bg-clip-text text-transparent tracking-wider" th:text="${name}">
+        <a href="#" class="text-xl font-extrabold bg-gradient-to-r from-fuchsia-400 via-pink-400 to-amber-300 bg-clip-text text-transparent tracking-wider" th:text="${profile.name}">
             Julito III T. Tiro
         </a>
 
@@ -45,8 +45,11 @@
             <a href="#projects" class="hover:text-amber-400 transition">Projects</a>
             <a href="#experience" class="hover:text-emerald-400 transition">Experience</a>
             <a href="#certifications" class="hover:text-rose-400 transition">Certifications</a>
-            <a href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition text-lg" title="GitHub Profile">
+            <a th:href="${profile.github}" href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition text-lg" title="GitHub Profile">
                 <i class="fa-brands fa-github"></i>
+            </a>
+            <a th:href="@{/resume.pdf}" href="/resume.pdf" target="_blank" class="flex items-center gap-2 border border-cyan-500/50 text-cyan-300 px-3 py-1.5 rounded-lg hover:border-cyan-400 hover:text-cyan-200 transition">
+                <i class="fa-solid fa-download"></i> Resume
             </a>
         </nav>
     </div>
@@ -58,7 +61,10 @@
         <a href="#projects" class="block hover:text-amber-400 transition">Projects</a>
         <a href="#experience" class="block hover:text-emerald-400 transition">Experience</a>
         <a href="#certifications" class="block hover:text-rose-400 transition">Certifications</a>
-        <a href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="inline-block text-purple-400 text-2xl pt-2">
+        <a th:href="@{/resume.pdf}" href="/resume.pdf" target="_blank" class="block text-cyan-300 hover:text-cyan-200 transition">
+            <i class="fa-solid fa-download"></i> Download Resume
+        </a>
+        <a th:href="${profile.github}" href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="inline-block text-purple-400 text-2xl pt-2">
             <i class="fa-brands fa-github"></i>
         </a>
     </div>
@@ -69,37 +75,43 @@
 
     <!-- Text Content (Left Side) -->
     <div class="md:w-3/5">
-    <span class="inline-block px-3 py-1 text-xs font-bold uppercase tracking-widest text-fuchsia-300 bg-fuchsia-950/80 border border-fuchsia-500/50 rounded-full mb-4">
+    <span class="inline-block px-3 py-1 text-xs font-bold uppercase tracking-widest text-fuchsia-300 bg-fuchsia-950/80 border border-fuchsia-500/50 rounded-full mb-4" th:text="${profile.tagline}">
         Java developer building Spring Boot apps
     </span>
         <h1 class="font-black text-white mt-2 mb-4 leading-tight">
             <span class="block text-xl md:text-2xl lg:text-3xl font-semibold text-slate-300 mb-1">Hi, I'm</span>
-            <span class="text-3xl md:text-5xl lg:text-6xl bg-gradient-to-r from-fuchsia-400 via-rose-400 to-amber-400 bg-clip-text text-transparent" th:text="${name}">Julito III T. Tiro</span>
+            <span class="text-3xl md:text-5xl lg:text-6xl bg-gradient-to-r from-fuchsia-400 via-rose-400 to-amber-400 bg-clip-text text-transparent" th:text="${profile.name}">Julito III T. Tiro</span>
         </h1>
-        <h2 class="text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-6" th:text="${title}">
+        <h2 class="text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-6" th:text="${profile.title}">
             Full-Stack Java Developer
         </h2>
-        <p class="text-slate-300 text-base md:text-lg mb-8 leading-relaxed">
-            Full-stack Java developer and BSIT graduate who builds web applications with Spring Boot, Thymeleaf, REST APIs, SQL databases and Docker. I also build low-code business apps and dashboards with Power Apps, Power Automate and Power BI.
+        <p class="text-slate-300 text-base md:text-lg mb-8 leading-relaxed" th:text="${profile.summary}">
+            Short summary of the role you're targeting.
         </p>
         <div class="flex flex-wrap gap-4 text-sm font-medium">
-            <a href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-slate-900/90 px-4 py-2.5 rounded-xl border border-purple-500/40 text-purple-300 hover:border-purple-400 transition shadow-lg shadow-purple-950/20">
+            <a th:href="${profile.github}" href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-slate-900/90 px-4 py-2.5 rounded-xl border border-purple-500/40 text-purple-300 hover:border-purple-400 transition shadow-lg shadow-purple-950/20">
                 <i class="fa-brands fa-github text-purple-400 text-lg"></i>
-                <span>github.com/jiiitiro</span>
+                <span th:text="${profile.githubLabel()}">github.com/jiiitiro</span>
             </a>
             <span class="flex items-center gap-2 bg-slate-900/90 px-4 py-2.5 rounded-xl border border-pink-500/40 text-pink-300 shadow-lg shadow-pink-950/20">
             <i class="fa-solid fa-location-dot text-pink-400"></i>
-            <span th:text="${location}">Quezon City, Philippines</span>
+            <span th:text="${profile.location}">Quezon City, Philippines</span>
         </span>
             <span class="flex items-center gap-2 bg-slate-900/90 px-4 py-2.5 rounded-xl border border-amber-500/40 text-amber-300 shadow-lg shadow-amber-950/20">
             <i class="fa-solid fa-phone text-amber-400"></i>
-            <span th:text="${phone}">+63 961 604 9255</span>
+            <span th:text="${profile.phone}">+63 961 604 9255</span>
         </span>
             <!-- Enhanced Email Me Button -->
-            <a th:href="'mailto:' + ${email}"
+            <a th:href="'mailto:' + ${profile.email}"
                class="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-2.5 rounded-xl text-white font-semibold shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-200">
                 <i class="fa-solid fa-paper-plane"></i>
                 <span>Email Me</span>
+            </a>
+            <!-- Download Resume Button -->
+            <a th:href="@{/resume.pdf}" href="/resume.pdf" target="_blank"
+               class="flex items-center gap-2 bg-slate-900/90 px-5 py-2.5 rounded-xl border border-cyan-500/50 text-cyan-300 font-semibold hover:border-cyan-400 hover:text-cyan-200 transition shadow-lg shadow-cyan-950/20">
+                <i class="fa-solid fa-download"></i>
+                <span>Download Resume</span>
             </a>
         </div>
     </div>
@@ -116,6 +128,7 @@
             <!-- Transparent PNG Portrait (Flush to Bottom) -->
             <img th:src="@{/images/portfolio_pic.png}"
                  src="/images/portfolio_pic.png"
+                 th:alt="${profile.name}"
                  alt="Julito III T. Tiro"
                  class="w-full h-auto max-h-[420px] object-cover object-top drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] transform group-hover:scale-105 transition duration-500">
 
@@ -135,75 +148,17 @@
         </h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <!-- Skill Card 1: Vibrant Purple/Pink -->
-            <div class="bg-slate-950/80 p-6 rounded-2xl border border-fuchsia-500/30 hover:border-fuchsia-500 transition shadow-lg shadow-fuchsia-950/20">
-                <h3 class="text-xl font-bold text-fuchsia-400 mb-4 flex items-center gap-2">
-                    <i class="fa-solid fa-server"></i> Backend Development
+            <!-- One card per skill group; the accent color comes from portfolio.yml -->
+            <div th:each="group : ${portfolio.skills}"
+                 th:with="c=${group.color}"
+                 th:class="|bg-slate-950/80 p-6 rounded-2xl border border-${c}-500/30 hover:border-${c}-500 transition shadow-lg shadow-${c}-950/20|">
+                <h3 th:class="|text-xl font-bold text-${c}-400 mb-4 flex items-center gap-2|">
+                    <i th:class="|fa-solid ${group.icon}|"></i> <th:block th:text="${group.name}">Skill Group</th:block>
                 </h3>
                 <div class="flex flex-wrap gap-2">
-                    <span class="bg-fuchsia-950 text-fuchsia-200 border border-fuchsia-700/60 text-xs font-semibold px-3 py-1 rounded-lg">Java (Core, OOP)</span>
-                    <span class="bg-fuchsia-950 text-fuchsia-200 border border-fuchsia-700/60 text-xs font-semibold px-3 py-1 rounded-lg">Spring Boot 3</span>
-                    <span class="bg-fuchsia-950 text-fuchsia-200 border border-fuchsia-700/60 text-xs font-semibold px-3 py-1 rounded-lg">Spring JPA</span>
-                    <span class="bg-fuchsia-950 text-fuchsia-200 border border-fuchsia-700/60 text-xs font-semibold px-3 py-1 rounded-lg">Spring Security</span>
-                    <span class="bg-fuchsia-950 text-fuchsia-200 border border-fuchsia-700/60 text-xs font-semibold px-3 py-1 rounded-lg">RESTful APIs</span>
-                    <span class="bg-fuchsia-950 text-fuchsia-200 border border-fuchsia-700/60 text-xs font-semibold px-3 py-1 rounded-lg">Python</span>
-                    <span class="bg-fuchsia-950 text-fuchsia-200 border border-fuchsia-700/60 text-xs font-semibold px-3 py-1 rounded-lg">FastAPI / Flask</span>
-                    <span class="bg-fuchsia-950 text-fuchsia-200 border border-fuchsia-700/60 text-xs font-semibold px-3 py-1 rounded-lg">C# / .NET</span>
-                </div>
-            </div>
-
-            <!-- Skill Card 2: Vibrant Amber -->
-            <div class="bg-slate-950/80 p-6 rounded-2xl border border-amber-500/30 hover:border-amber-500 transition shadow-lg shadow-amber-950/20">
-                <h3 class="text-xl font-bold text-amber-400 mb-4 flex items-center gap-2">
-                    <i class="fa-solid fa-laptop-code"></i> Frontend Development
-                </h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="bg-amber-950 text-amber-200 border border-amber-700/60 text-xs font-semibold px-3 py-1 rounded-lg">Thymeleaf</span>
-                    <span class="bg-amber-950 text-amber-200 border border-amber-700/60 text-xs font-semibold px-3 py-1 rounded-lg">HTML & CSS</span>
-                    <span class="bg-amber-950 text-amber-200 border border-amber-700/60 text-xs font-semibold px-3 py-1 rounded-lg">Tailwind CSS</span>
-                </div>
-            </div>
-
-            <!-- Skill Card 3: Vibrant Cyan/Blue -->
-            <div class="bg-slate-950/80 p-6 rounded-2xl border border-cyan-500/30 hover:border-cyan-500 transition shadow-lg shadow-cyan-950/20">
-                <h3 class="text-xl font-bold text-cyan-400 mb-4 flex items-center gap-2">
-                    <i class="fa-solid fa-database"></i> Databases & Data
-                </h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="bg-cyan-950 text-cyan-200 border border-cyan-700/60 text-xs font-semibold px-3 py-1 rounded-lg">PostgreSQL</span>
-                    <span class="bg-cyan-950 text-cyan-200 border border-cyan-700/60 text-xs font-semibold px-3 py-1 rounded-lg">MySQL</span>
-                    <span class="bg-cyan-950 text-cyan-200 border border-cyan-700/60 text-xs font-semibold px-3 py-1 rounded-lg">MSSQL</span>
-                    <span class="bg-cyan-950 text-cyan-200 border border-cyan-700/60 text-xs font-semibold px-3 py-1 rounded-lg">Oracle</span>
-                    <span class="bg-cyan-950 text-cyan-200 border border-cyan-700/60 text-xs font-semibold px-3 py-1 rounded-lg">SQL Optimization</span>
-                    <span class="bg-cyan-950 text-cyan-200 border border-cyan-700/60 text-xs font-semibold px-3 py-1 rounded-lg">Schema Design</span>
-                    <span class="bg-cyan-950 text-cyan-200 border border-cyan-700/60 text-xs font-semibold px-3 py-1 rounded-lg">Power BI</span>
-                    <span class="bg-cyan-950 text-cyan-200 border border-cyan-700/60 text-xs font-semibold px-3 py-1 rounded-lg">Data Visualization</span>
-                </div>
-            </div>
-
-            <!-- Skill Card 4: Vibrant Purple -->
-            <div class="bg-slate-950/80 p-6 rounded-2xl border border-purple-500/30 hover:border-purple-500 transition shadow-lg shadow-purple-950/20">
-                <h3 class="text-xl font-bold text-purple-400 mb-4 flex items-center gap-2">
-                    <i class="fa-solid fa-bolt"></i> Low-Code & Automation
-                </h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="bg-purple-950 text-purple-200 border border-purple-700/60 text-xs font-semibold px-3 py-1 rounded-lg">Power Apps</span>
-                    <span class="bg-purple-950 text-purple-200 border border-purple-700/60 text-xs font-semibold px-3 py-1 rounded-lg">Power Automate</span>
-                    <span class="bg-purple-950 text-purple-200 border border-purple-700/60 text-xs font-semibold px-3 py-1 rounded-lg">Dataverse</span>
-                </div>
-            </div>
-
-            <!-- Skill Card 5: Vibrant Emerald -->
-            <div class="bg-slate-950/80 p-6 rounded-2xl border border-emerald-500/30 hover:border-emerald-500 transition shadow-lg shadow-emerald-950/20">
-                <h3 class="text-xl font-bold text-emerald-400 mb-4 flex items-center gap-2">
-                    <i class="fa-solid fa-gears"></i> DevOps & Tools
-                </h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="bg-emerald-950 text-emerald-200 border border-emerald-700/60 text-xs font-semibold px-3 py-1 rounded-lg">Docker</span>
-                    <span class="bg-emerald-950 text-emerald-200 border border-emerald-700/60 text-xs font-semibold px-3 py-1 rounded-lg">Git / GitLab CI/CD</span>
-                    <span class="bg-emerald-950 text-emerald-200 border border-emerald-700/60 text-xs font-semibold px-3 py-1 rounded-lg">Postman</span>
-                    <span class="bg-emerald-950 text-emerald-200 border border-emerald-700/60 text-xs font-semibold px-3 py-1 rounded-lg">VS Code</span>
-                    <span class="bg-emerald-950 text-emerald-200 border border-emerald-700/60 text-xs font-semibold px-3 py-1 rounded-lg">IntelliJ IDEA</span>
+                    <span th:each="skill : ${group.items}"
+                          th:class="|bg-${c}-950 text-${c}-200 border border-${c}-700/60 text-xs font-semibold px-3 py-1 rounded-lg|"
+                          th:text="${skill}">Skill</span>
                 </div>
             </div>
 
@@ -219,57 +174,16 @@
     </h2>
     <div class="grid md:grid-cols-2 gap-8">
 
-        <!-- Project 1: Pink Highlight -->
-        <div class="bg-slate-900/80 border border-pink-500/30 rounded-2xl p-6 hover:border-pink-500 transition shadow-xl shadow-pink-950/10">
+        <div th:each="project : ${portfolio.projects}"
+             th:with="c=${project.color}"
+             th:class="|bg-slate-900/80 border border-${c}-500/30 rounded-2xl p-6 hover:border-${c}-500 transition shadow-xl shadow-${c}-950/10|">
             <div class="flex justify-between items-start mb-3">
-                <h3 class="text-2xl font-bold text-white">FoodieFleet</h3>
-                <span class="text-xs bg-pink-950 text-pink-300 border border-pink-700/50 font-bold px-3 py-1 rounded-full">2026</span>
+                <h3 class="text-2xl font-bold text-white" th:text="${project.name}">Project</h3>
+                <span th:class="|text-xs bg-${c}-950 text-${c}-300 border border-${c}-700/50 font-bold px-3 py-1 rounded-full|" th:text="${project.period}">2026</span>
             </div>
-            <p class="text-sm text-pink-400 font-semibold mb-4">Role: Full-Stack Java Developer | Personal Project</p>
+            <p th:class="|text-sm text-${c}-400 font-semibold mb-4|" th:text="|Role: ${project.role}|">Role</p>
             <ul class="list-disc list-inside text-slate-300 text-sm space-y-2">
-                <li>Built an end-to-end web application following MVC architecture using Java, Spring Boot, and Thymeleaf.</li>
-                <li>Designed RESTful API endpoints and relational database schemas for dynamic workflows.</li>
-                <li>Containerized application environments using Docker to ensure consistent multi-container deployments.</li>
-            </ul>
-        </div>
-
-        <!-- Project 2: Amber Highlight -->
-        <div class="bg-slate-900/80 border border-amber-500/30 rounded-2xl p-6 hover:border-amber-500 transition shadow-xl shadow-amber-950/10">
-            <div class="flex justify-between items-start mb-3">
-                <h3 class="text-2xl font-bold text-white">Jcasheesh</h3>
-                <span class="text-xs bg-amber-950 text-amber-300 border border-amber-700/50 font-bold px-3 py-1 rounded-full">2026</span>
-            </div>
-            <p class="text-sm text-amber-400 font-semibold mb-4">Role: Full-Stack Java Developer | Personal Project</p>
-            <ul class="list-disc list-inside text-slate-300 text-sm space-y-2">
-                <li>Developed a secure web application managing real-time user balances, transaction logging, and reporting.</li>
-                <li>Implemented authentication, session management, and role-based access control (RBAC) with Spring Security.</li>
-                <li>Conducted API testing with Postman to validate business logic and data response structures.</li>
-            </ul>
-        </div>
-
-        <!-- Project 3: Cyan Highlight -->
-        <div class="bg-slate-900/80 border border-cyan-500/30 rounded-2xl p-6 hover:border-cyan-500 transition shadow-xl shadow-cyan-950/10">
-            <div class="flex justify-between items-start mb-3">
-                <h3 class="text-2xl font-bold text-white">AGREEMO: Hydroponic Automation System</h3>
-                <span class="text-xs bg-cyan-950 text-cyan-300 border border-cyan-700/50 font-bold px-3 py-1 rounded-full">Aug 2024 - May 2025</span>
-            </div>
-            <p class="text-sm text-cyan-400 font-semibold mb-4">Role: Project Manager & Backend Programmer (Capstone)</p>
-            <ul class="list-disc list-inside text-slate-300 text-sm space-y-2">
-                <li>Developed backend logic, database schemas, and algorithms for an IoT monitoring platform.</li>
-                <li>Led a 16-member Agile development team across requirement gathering, sprint tracking, and documentation.</li>
-            </ul>
-        </div>
-
-        <!-- Project 4: Emerald Highlight -->
-        <div class="bg-slate-900/80 border border-emerald-500/30 rounded-2xl p-6 hover:border-emerald-500 transition shadow-xl shadow-emerald-950/10">
-            <div class="flex justify-between items-start mb-3">
-                <h3 class="text-2xl font-bold text-white">Busy Hands Enterprise Management System</h3>
-                <span class="text-xs bg-emerald-950 text-emerald-300 border border-emerald-700/50 font-bold px-3 py-1 rounded-full">Feb 2024 - May 2024</span>
-            </div>
-            <p class="text-sm text-emerald-400 font-semibold mb-4">Role: Project Manager & Full-Stack Programmer</p>
-            <ul class="list-disc list-inside text-slate-300 text-sm space-y-2">
-                <li>Engineered a 5-module system covering task scheduling, client records, inventory, and reporting workflows.</li>
-                <li>Structured relational schemas capable of handling high transaction volumes with strict data integrity.</li>
+                <li th:each="highlight : ${project.highlights}" th:text="${highlight}">Highlight</li>
             </ul>
         </div>
 
@@ -284,23 +198,12 @@
             <span>Work <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Experience</span></span>
         </h2>
         <div class="space-y-8">
-            <!-- Exp 1 -->
-            <div class="border-l-4 border-fuchsia-500 pl-6 space-y-2">
-                <h3 class="text-xl font-bold text-white">Data Encoder / Graphic Designer</h3>
-                <p class="text-sm font-semibold text-fuchsia-400">Office of the Secretary to the Mayor, Quezon City Government | <span class="text-slate-400">Jul 2025 - Sept 2026</span></p>
-                <p class="text-slate-300 text-sm">Managed data entry, record auditing, database integrity across local government repositories, and designed public communication media.</p>
-            </div>
-            <!-- Exp 2 -->
-            <div class="border-l-4 border-cyan-500 pl-6 space-y-2">
-                <h3 class="text-xl font-bold text-white">Graphic Designer, Researcher & Digital Page Admin</h3>
-                <p class="text-sm font-semibold text-cyan-400">Serbisyo sa Bayan Partylist (SBP) | <span class="text-slate-400">Jun 2024 - Jun 2025</span></p>
-                <p class="text-slate-300 text-sm">Managed digital channels, compiled leadership reports, and produced public campaign collateral and process guides.</p>
-            </div>
-            <!-- Exp 3 -->
-            <div class="border-l-4 border-amber-500 pl-6 space-y-2">
-                <h3 class="text-xl font-bold text-white">Computer & Area Technician</h3>
-                <p class="text-sm font-semibold text-amber-400">Cdr-King | <span class="text-slate-400">Feb 2012 - Dec 2015</span></p>
-                <p class="text-slate-300 text-sm">Diagnosed and resolved hardware, software, and peripheral incidents within target service SLAs.</p>
+            <div th:each="job : ${portfolio.experience}"
+                 th:with="c=${job.color}"
+                 th:class="|border-l-4 border-${c}-500 pl-6 space-y-2|">
+                <h3 class="text-xl font-bold text-white" th:text="${job.title}">Job Title</h3>
+                <p th:class="|text-sm font-semibold text-${c}-400|"><th:block th:text="${job.organization}">Organization</th:block> | <span class="text-slate-400" th:text="${job.period}">Period</span></p>
+                <p class="text-slate-300 text-sm" th:text="${job.description}">Description</p>
             </div>
         </div>
     </div>
@@ -315,10 +218,10 @@
             <h2 class="text-3xl font-extrabold text-white mb-6 flex items-center gap-3">
                 <i class="fa-solid fa-graduation-cap text-rose-400"></i> Education
             </h2>
-            <div class="bg-slate-900/80 p-6 rounded-2xl border border-rose-500/30 shadow-lg shadow-rose-950/10">
-                <h3 class="text-xl font-bold text-white">Bachelor of Science in Information Technology (BSIT)</h3>
-                <p class="text-rose-400 font-semibold mt-1">Quezon City University</p>
-                <p class="text-slate-400 text-sm mt-1">Graduated 2025</p>
+            <div th:each="school : ${portfolio.education}" class="bg-slate-900/80 p-6 rounded-2xl border border-rose-500/30 shadow-lg shadow-rose-950/10">
+                <h3 class="text-xl font-bold text-white" th:text="${school.degree}">Degree</h3>
+                <p class="text-rose-400 font-semibold mt-1" th:text="${school.school}">School</p>
+                <p class="text-slate-400 text-sm mt-1" th:text="${school.period}">Graduated</p>
             </div>
         </div>
 
@@ -327,48 +230,19 @@
             <h2 class="text-3xl font-extrabold text-white mb-6 flex items-center gap-3">
                 <i class="fa-solid fa-certificate text-fuchsia-400"></i> Certifications & Training
             </h2>
-            <!-- To link a certificate to its proof, wrap its name: <a href="URL" target="_blank" rel="noopener noreferrer" class="hover:text-fuchsia-300 underline"><strong>Name</strong></a> -->
             <h3 class="text-lg font-bold text-emerald-400 mb-3">Completed</h3>
             <ul class="space-y-3 text-slate-300 text-sm mb-8">
-                <li class="flex items-start gap-2.5">
-                    <i class="fa-solid fa-circle-check text-cyan-400 mt-1 flex-shrink-0"></i>
-                    <span><strong>Master Java, Spring 6, Spring Boot 3, Spring Security, Docker, & Microservices</strong> – Udemy</span>
-                </li>
-                <li class="flex items-start gap-2.5">
-                    <i class="fa-solid fa-circle-check text-emerald-400 mt-1 flex-shrink-0"></i>
-                    <span><strong>Mastering REST API with FastAPI & Flask</strong> – Udemy</span>
-                </li>
-                <li class="flex items-start gap-2.5">
-                    <i class="fa-solid fa-circle-check text-rose-400 mt-1 flex-shrink-0"></i>
-                    <span><strong>100 Days of Code: The Complete Python Pro Bootcamp</strong> – Udemy</span>
-                </li>
-                <li class="flex items-start gap-2.5">
-                    <i class="fa-solid fa-circle-check text-purple-400 mt-1 flex-shrink-0"></i>
-                    <span><strong>Canvas Apps, Dataverse & Model-Driven Apps in Power Apps</strong> – Microsoft Learn</span>
-                </li>
-                <li class="flex items-start gap-2.5">
-                    <i class="fa-solid fa-circle-check text-amber-400 mt-1 flex-shrink-0"></i>
-                    <span><strong>NSE 1 Network Security Associate</strong> – Fortinet</span>
-                </li>
-                <li class="flex items-start gap-2.5">
-                    <i class="fa-solid fa-circle-check text-blue-400 mt-1 flex-shrink-0"></i>
-                    <span><strong>Ethical Hacking & Cybersecurity Foundations</strong> – Upskill I.T. Workshop / Udemy</span>
+                <li th:each="cert : ${portfolio.completedCertifications()}" class="flex items-start gap-2.5">
+                    <i th:class="|fa-solid fa-circle-check text-${cert.color}-400 mt-1 flex-shrink-0|"></i>
+                    <span th:replace="~{:: certLine}"></span>
                 </li>
             </ul>
 
             <h3 class="text-lg font-bold text-amber-400 mb-3">In Progress</h3>
             <ul class="space-y-3 text-slate-300 text-sm">
-                <li class="flex items-start gap-2.5">
-                    <i class="fa-solid fa-hourglass-half text-fuchsia-400 mt-1 flex-shrink-0"></i>
-                    <span><strong>Java NC III</strong> – Technical Education and Skills Development Authority (TESDA)</span>
-                </li>
-                <li class="flex items-start gap-2.5">
-                    <i class="fa-solid fa-hourglass-half text-pink-400 mt-1 flex-shrink-0"></i>
-                    <span><strong>Dataverse, Canvas & Model-Driven Power Apps and Automate</strong> – Udemy</span>
-                </li>
-                <li class="flex items-start gap-2.5">
-                    <i class="fa-solid fa-hourglass-half text-yellow-400 mt-1 flex-shrink-0"></i>
-                    <span><strong>Master Power BI Desktop for Data Prep, Data Analysis, Data Visualization & Dashboard Design</strong> – Udemy</span>
+                <li th:each="cert : ${portfolio.inProgressCertifications()}" class="flex items-start gap-2.5">
+                    <i th:class="|fa-solid fa-hourglass-half text-${cert.color}-400 mt-1 flex-shrink-0|"></i>
+                    <span th:replace="~{:: certLine}"></span>
                 </li>
             </ul>
         </div>
@@ -379,12 +253,17 @@
 <!-- Footer -->
 <footer class="bg-slate-950 py-8 border-t border-slate-800 text-center text-slate-500 text-sm">
     <div class="flex justify-center items-center gap-4 mb-3">
-        <a href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-purple-400 text-xl transition">
+        <a th:href="${profile.github}" href="https://github.com/jiiitiro" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-purple-400 text-xl transition">
             <i class="fa-brands fa-github"></i>
         </a>
     </div>
-    <p>&copy; 2026 Julito III T. Tiro. All rights reserved.</p>
+    <p>&copy; 2026 <th:block th:text="${profile.name}">Julito III T. Tiro</th:block>. All rights reserved.</p>
 </footer>
+
+<!-- Certificate line fragment: links the name when the certificate has a url in portfolio.yml -->
+<th:block th:if="false">
+    <span th:fragment="certLine"><a th:if="${cert.url}" th:href="${cert.url}" target="_blank" rel="noopener noreferrer" class="underline hover:text-white"><strong th:text="${cert.name}">Certificate</strong></a><strong th:unless="${cert.url}" th:text="${cert.name}">Certificate</strong> – <th:block th:text="${cert.provider}">Provider</th:block></span>
+</th:block>
 
 <!-- Mobile Menu Toggle Script -->
 <script>

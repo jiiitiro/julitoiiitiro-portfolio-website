@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!--
+  ATS-friendly resume: single column, plain fonts, no icons or photo.
+  Served at /resume and rendered to PDF at /resume.pdf, both from portfolio.yml.
+  Keep the CSS simple (CSS 2.1, no flexbox/grid): the PDF renderer is OpenHTMLtoPDF.
+-->
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:with="profile=${portfolio.profile}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="|${profile.name} - Resume|">Resume</title>
+    <meta name="author" th:content="${profile.name}">
+    <meta name="subject" th:content="${profile.title}">
+    <style>
+        @page {
+            size: A4;
+            margin: 16mm 16mm 14mm 16mm;
+        }
+
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 10pt;
+            line-height: 1.35;
+            color: #111;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 20pt;
+            margin: 0;
+        }
+
+        .headline {
+            font-size: 11.5pt;
+            font-weight: bold;
+            margin: 2pt 0 4pt 0;
+        }
+
+        .contact {
+            margin: 0;
+        }
+
+        .contact a {
+            color: #111;
+            text-decoration: none;
+        }
+
+        h2 {
+            font-size: 11pt;
+            text-transform: uppercase;
+            letter-spacing: 0.5pt;
+            border-bottom: 1px solid #555;
+            padding-bottom: 1pt;
+            margin: 12pt 0 5pt 0;
+        }
+
+        h3 {
+            font-size: 10.5pt;
+            margin: 6pt 0 0 0;
+        }
+
+        .meta {
+            margin: 0 0 2pt 0;
+            color: #333;
+        }
+
+        p {
+            margin: 0 0 3pt 0;
+        }
+
+        ul {
+            margin: 2pt 0 0 0;
+            padding-left: 14pt;
+        }
+
+        li {
+            margin-bottom: 1.5pt;
+        }
+
+        .entry {
+            page-break-inside: avoid;
+        }
+
+        @media screen {
+            body {
+                background: #e5e7eb;
+                padding: 24px 16px;
+            }
+
+            .page {
+                background: #fff;
+                max-width: 760px;
+                margin: 0 auto;
+                padding: 40px 48px;
+                box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+            }
+
+            .download {
+                max-width: 760px;
+                margin: 0 auto 12px auto;
+                text-align: right;
+                font-size: 10pt;
+            }
+        }
+
+        @media print {
+            .download {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="download"><a href="/resume.pdf">Download PDF</a></div>
+
+<div class="page">
+
+    <h1 th:text="${profile.name}">Name</h1>
+    <p class="headline" th:text="${profile.title}">Title</p>
+    <p class="contact">
+        <th:block th:text="${profile.location}">Location</th:block> |
+        <a th:href="|mailto:${profile.email}|" th:text="${profile.email}">email</a> |
+        <th:block th:text="${profile.phone}">phone</th:block> |
+        <a th:href="${profile.github}" th:text="${profile.githubLabel()}">github</a>
+    </p>
+
+    <h2>Summary</h2>
+    <p th:text="${profile.summary}">Summary</p>
+
+    <h2>Technical Skills</h2>
+    <p th:each="group : ${portfolio.skills}">
+        <strong th:text="|${group.name}:|">Group:</strong>
+        <th:block th:text="${#strings.listJoin(group.items, ', ')}">Skills</th:block>
+    </p>
+
+    <h2>Work Experience</h2>
+    <div class="entry" th:each="job : ${portfolio.experience}">
+        <h3 th:text="${job.title}">Job Title</h3>
+        <p class="meta" th:text="${job.organization} + ' | ' + ${job.period}">Organization | Period</p>
+        <p th:text="${job.description}">Description</p>
+    </div>
+
+    <h2>Projects</h2>
+    <div class="entry" th:each="project : ${portfolio.projects}">
+        <h3 th:text="${project.name}">Project</h3>
+        <p class="meta" th:text="${project.role} + ' | ' + ${project.period}">Role | Period</p>
+        <ul>
+            <li th:each="highlight : ${project.highlights}" th:text="${highlight}">Highlight</li>
+        </ul>
+    </div>
+
+    <h2>Education</h2>
+    <div class="entry" th:each="school : ${portfolio.education}">
+        <h3 th:text="${school.degree}">Degree</h3>
+        <p class="meta" th:text="${school.school} + ' | ' + ${school.period}">School | Period</p>
+    </div>
+
+    <h2>Certifications</h2>
+    <ul>
+        <li th:each="cert : ${portfolio.completedCertifications()}" th:text="|${cert.name} – ${cert.provider}|">Certificate – Provider</li>
+        <li th:each="cert : ${portfolio.inProgressCertifications()}" th:text="|${cert.name} – ${cert.provider} (in progress)|">Certificate – Provider (in progress)</li>
+    </ul>
+
+</div>
+
+</body>
+</html>
