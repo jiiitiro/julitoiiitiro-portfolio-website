@@ -19,7 +19,8 @@ portfolio:
     email: "julitoiiitiro@gmail.com"
     phone: "+63 961 604 9255"   # shown on the resume only, not on the website
     github: "https://github.com/jiiitiro"
-    linkedin: ""                # e.g. "https://www.linkedin.com/in/<you>"; links stay hidden while blank
+    linkedin: "https://www.linkedin.com/in/julitoiiitiro"
+    facebook: "https://www.facebook.com/tirojulitoiii"   # website only, not on the resume; blank hides it
     site-url: "https://julitoiiitiro-portfolio.up.railway.app"
     source-code: "https://github.com/jiiitiro/julitoiiitiro-portfolio-website"   # "View source" link in the footer
 

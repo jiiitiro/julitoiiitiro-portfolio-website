@@ -6,7 +6,7 @@ My personal portfolio site: a single-page Spring Boot app that shows my skills, 
 
 ## Site sections
 
-- **About:** name, headline, short summary and contact links (GitHub, LinkedIn, email; the phone number is only on the resume)
+- **About:** name, headline, short summary and contact links (GitHub, LinkedIn, Facebook, email; the phone number is only on the resume)
 - **Skills:** grouped into Backend, Frontend, Databases & Data, Low-Code & Automation, and DevOps & Tools
 - **Projects:** personal and capstone projects. Each card links to its own detail page at `/projects/<slug>` with an overview (or the project's README, synced live from GitHub), a screenshot carousel (arrows, thumbnails, swipe and arrow keys; click to view fullscreen), key features, tech stack, challenges, lessons learned, and GitHub / Live Demo / document download (e.g. a PDF user manual) buttons when they exist
 - **Experience:** work history
@@ -77,7 +77,7 @@ java -jar target/julitoiiitiro.portfolio-0.0.1-SNAPSHOT.jar
 
 All text lives in one file: `src/main/resources/portfolio.yml`. Edit it, then rebuild or redeploy, and both the website and the resume PDF update. You don't need to touch the HTML.
 
-- **Profile:** name, title, tagline, summary, contact details, and `source-code` (the repo link in the footer; blank hides it). `phone` appears only on the resume. Set `linkedin` to your profile URL to show LinkedIn buttons in the navbar, hero, footer and resume; while it's blank they stay hidden.
+- **Profile:** name, title, tagline, summary, contact details, and `source-code` (the repo link in the footer; blank hides it). `phone` appears only on the resume. Set `linkedin` to your profile URL to show LinkedIn buttons in the navbar, hero, footer and resume; while it's blank they stay hidden. `facebook` works the same way but appears only as an icon in the navbar, mobile menu and footer (not in the intro or on the resume).
 - **Skills, projects, experience, education:** add, remove or reorder list entries
 - **Certifications:** set `status: completed` or `status: in-progress`. When you finish one, change its status. Add `url: "https://..."` to link it to its certificate.
 - `color` and `icon` only affect the website's accents; the resume ignores them.

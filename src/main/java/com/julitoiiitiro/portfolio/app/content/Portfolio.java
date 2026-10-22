@@ -28,12 +28,14 @@ public record Portfolio(
             String phone,
             String github,
             String linkedin,
+            String facebook,
             String siteUrl,
             String sourceCode) {
 
-        // LinkedIn and the source-code link are optional: a blank value hides them.
+        // LinkedIn, Facebook and the source-code link are optional: a blank value hides them.
         public Profile {
             linkedin = blankToNull(linkedin);
+            facebook = blankToNull(facebook);
             sourceCode = blankToNull(sourceCode);
         }
 

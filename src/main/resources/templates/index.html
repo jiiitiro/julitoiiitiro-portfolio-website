@@ -59,6 +59,9 @@
             <a th:if="${profile.linkedin}" th:href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition text-lg" title="LinkedIn Profile" aria-label="LinkedIn profile">
                 <i class="fa-brands fa-linkedin"></i>
             </a>
+            <a th:if="${profile.facebook}" th:href="${profile.facebook}" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition text-lg" title="Facebook Profile" aria-label="Facebook profile">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
             <a th:href="@{/resume.pdf}" href="/resume.pdf" target="_blank" class="flex items-center gap-2 border border-cyan-500/50 text-cyan-300 px-3 py-1.5 rounded-lg hover:border-cyan-400 hover:text-cyan-200 transition">
                 <i class="fa-solid fa-download"></i> Resume
             </a>
@@ -80,6 +83,9 @@
         </a>
         <a th:if="${profile.linkedin}" th:href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" class="inline-block text-sky-400 text-2xl pt-2 ml-4" aria-label="LinkedIn profile">
             <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a th:if="${profile.facebook}" th:href="${profile.facebook}" target="_blank" rel="noopener noreferrer" class="inline-block text-blue-400 text-2xl pt-2 ml-4" aria-label="Facebook profile">
+            <i class="fa-brands fa-facebook"></i>
         </a>
     </div>
 </header>
@@ -282,6 +288,9 @@
         </a>
         <a th:if="${profile.linkedin}" th:href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-sky-400 text-xl transition" aria-label="LinkedIn profile">
             <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a th:if="${profile.facebook}" th:href="${profile.facebook}" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-blue-400 text-xl transition" aria-label="Facebook profile">
+            <i class="fa-brands fa-facebook"></i>
         </a>
         <a th:href="'mailto:' + ${profile.email}" class="text-slate-400 hover:text-cyan-400 text-xl transition" aria-label="Email">
             <i class="fa-solid fa-envelope"></i>
