@@ -58,7 +58,7 @@ portfolio:
   #                  caption: "Login page"
   #   documents:   - file: "user-manual.pdf"      (stored next to the screenshots; shows a download button)
   #                  label: "User Manual (PDF)"
-  #   github:      repo URL (shows a GitHub button)
+  #   github:      repo URL (shows a GitHub button); use .../tree/<branch> to open a specific branch
   #   readme:      GitHub README link (https://github.com/<you>/<repo>/blob/main/README.md). When set, the page
   #                shows the live README instead of overview and features, refreshed every 10 minutes.
   #   demo:        live demo URL (shows a Live Demo button)
@@ -79,9 +79,21 @@ portfolio:
       tech-stack: ["Java", "Spring Boot", "Spring Security", "Thymeleaf", "Tailwind CSS", "PostgreSQL", "REST API", "Docker"]
       challenges: []
       lessons: []
-      screenshots: []
-      github: "https://github.com/jiiitiro/foodie-fleet-app"
-      readme: "https://github.com/jiiitiro/foodie-fleet-app/blob/main/README.md"
+      screenshots:
+        - file: "login.png"
+          caption: "Log in to one platform shared by customers, restaurants and drivers"
+        - file: "create-account.png"
+          caption: "Sign up as a customer, restaurant or driver"
+        - file: "customer-dashboard.png"
+          caption: "Customer home: search restaurants that are open right now"
+        - file: "ordering.png"
+          caption: "Restaurant menu with a live cart"
+        - file: "waiting-accept-order.png"
+          caption: "Order tracking from placed to delivered, with cancel until the restaurant accepts"
+        - file: "restaurant-dashboard.png"
+          caption: "Restaurant dashboard: accept incoming orders and manage the menu"
+      github: "https://github.com/jiiitiro/foodie-fleet-app/tree/main-dev"
+      readme: "https://github.com/jiiitiro/foodie-fleet-app/blob/main-dev/README.md"
       demo: ""
       youtube-id: ""
       source-note: ""

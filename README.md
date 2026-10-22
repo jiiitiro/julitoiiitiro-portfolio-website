@@ -85,7 +85,7 @@ All text lives in one file: `src/main/resources/portfolio.yml`. Edit it, then re
 ### Adding project details and screenshots
 
 1. Take 3–6 screenshots (login, dashboard, main features) and compress each to under ~300 KB (WebP or PNG). Use test accounts, and check that no real phone numbers, emails, names or balances show: screenshots are public on the site and stay in the git history even after you replace them.
-2. Put them in `src/main/resources/static/images/projects/<slug>/`, e.g. `static/images/projects/foodiefleet/dashboard.webp`.
+2. Strip photo metadata, and blur or cover anything personal (an image editor works; covering a phone number with the surrounding background is enough). Put them in `src/main/resources/static/images/projects/<slug>/`, e.g. `static/images/projects/foodiefleet/dashboard.webp`.
 3. In `portfolio.yml`, fill in that project's fields:
 
 ```yaml
@@ -107,7 +107,7 @@ All text lives in one file: `src/main/resources/portfolio.yml`. Edit it, then re
       source-note: ""           # e.g. "Source code private (capstone project)" when there's no GitHub link
 ```
 
-Screenshots appear in the carousel in the order listed. Each entry under `documents` adds a download button next to GitHub / Live Demo. Before adding a PDF, check it for other people's personal data (a thesis appendix with team CVs, for example, has phone numbers and addresses); everything in `static/` is public. Empty fields are hidden on the page. Until `features` is filled in, the page shows the card's `highlights` as key features. A project's GitHub link also appears on the resume.
+Screenshots appear in the carousel in the order listed. Each entry under `documents` adds a download button next to GitHub / Live Demo. Before adding a PDF, check it for other people's personal data (a thesis appendix with team CVs, for example, has phone numbers and addresses); everything in `static/` is public. Empty fields are hidden on the page. Until `features` is filled in, the page shows the card's `highlights` as key features. A project's GitHub link also appears on the resume. To send visitors to a branch other than the default, use its tree link, e.g. `https://github.com/jiiitiro/foodie-fleet-app/tree/main-dev`.
 
 ### Live README from GitHub
 
@@ -115,7 +115,7 @@ Set `readme:` to a project's README link on GitHub (`https://github.com/<user>/<
 
 - Relative links and images in the README are pointed at GitHub, and unsafe HTML is stripped.
 - If GitHub can't be reached, the page shows the last copy it fetched, or the `overview` and `features` from `portfolio.yml` if it has none yet. Keep those filled in as a fallback.
-- The link must point at the branch visitors should see (usually `main`). Changes pushed to other branches don't show up.
+- The link must point at the branch visitors should see (usually `main`; FoodieFleet uses `main-dev`, the same branch as its GitHub button). Changes pushed to other branches don't show up.
 
 To check the resume, open http://localhost:8080/resume.pdf. It should fit on 1–2 A4 pages.
 
