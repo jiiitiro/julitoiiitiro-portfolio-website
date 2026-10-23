@@ -71,6 +71,7 @@ public record Portfolio(
             String readme,
             String demo,
             String youtubeId,
+            String video,
             String sourceNote) {
 
         // Optional fields: missing lists become empty and blank strings become null,
@@ -88,6 +89,7 @@ public record Portfolio(
             readme = blankToNull(readme);
             demo = blankToNull(demo);
             youtubeId = blankToNull(youtubeId);
+            video = blankToNull(video);
             sourceNote = blankToNull(sourceNote);
         }
 

@@ -145,9 +145,14 @@
     </section>
 
     <!-- Demo video -->
-    <section th:if="${project.youtubeId}">
+    <section th:if="${project.youtubeId != null or project.video != null}">
         <h2 class="text-2xl font-extrabold text-white mb-4">Demo Video</h2>
-        <div class="aspect-video rounded-xl overflow-hidden border border-slate-700">
+        <!-- Video file stored next to the screenshots; sized by its own aspect ratio so phone recordings stay tall -->
+        <video th:if="${project.video}" controls playsinline preload="metadata"
+               th:src="@{/images/projects/{slug}/{file}(slug=${project.slug},file=${project.video})}"
+               th:aria-label="|${project.name} demo video|"
+               class="block mx-auto max-h-[80vh] max-w-full rounded-xl border border-slate-700 bg-black"></video>
+        <div th:if="${project.youtubeId != null and project.video == null}" class="aspect-video rounded-xl overflow-hidden border border-slate-700">
             <iframe class="w-full h-full"
                     th:src="|https://www.youtube-nocookie.com/embed/${project.youtubeId}|"
                     th:title="|${project.name} demo video|"

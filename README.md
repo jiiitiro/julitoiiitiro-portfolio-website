@@ -104,10 +104,11 @@ All text lives in one file: `src/main/resources/portfolio.yml`. Edit it, then re
       readme: "https://github.com/jiiitiro/<repo>/blob/main/README.md"   # optional, see below
       demo: "https://<app>.up.railway.app"
       youtube-id: ""            # unlisted demo video ID (optional)
+      video: ""                 # or a video file stored next to the screenshots, e.g. "demo.mp4" (optional)
       source-note: ""           # e.g. "Source code private (capstone project)" when there's no GitHub link
 ```
 
-Screenshots appear in the carousel in the order listed. Each entry under `documents` adds a download button next to GitHub / Live Demo. Before adding a PDF, check it for other people's personal data (a thesis appendix with team CVs, for example, has phone numbers and addresses); everything in `static/` is public. Empty fields are hidden on the page. Until `features` is filled in, the page shows the card's `highlights` as key features. A project's GitHub link also appears on the resume. To send visitors to a branch other than the default, use its tree link, e.g. `https://github.com/jiiitiro/foodie-fleet-app/tree/main-dev`.
+Screenshots appear in the carousel in the order listed. Each entry under `documents` adds a download button next to GitHub / Live Demo. For a demo video, either upload it to YouTube as unlisted and set `youtube-id`, or put a small MP4 (a few MB; trim it, blur anything personal and re-encode it first) next to the screenshots and set `video`. A video file takes priority over `youtube-id`. Before adding a PDF, check it for other people's personal data (a thesis appendix with team CVs, for example, has phone numbers and addresses); everything in `static/` is public. Empty fields are hidden on the page. Until `features` is filled in, the page shows the card's `highlights` as key features. A project's GitHub link also appears on the resume. To send visitors to a branch other than the default, use its tree link, e.g. `https://github.com/jiiitiro/foodie-fleet-app/tree/main-dev`.
 
 ### Live README from GitHub
 
