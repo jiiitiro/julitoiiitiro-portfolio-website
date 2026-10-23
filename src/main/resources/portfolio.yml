@@ -143,6 +143,7 @@ portfolio:
       readme: "https://github.com/jiiitiro/JCasheeshBank/blob/main/README.md"
       demo: ""
       youtube-id: ""
+      video: "jcasheesh-demo.mp4"
       source-note: ""
     - slug: "employee-canvas-app"
       name: "Employee Management Canvas App"
