@@ -249,15 +249,29 @@ portfolio:
     - slug: "busy-hands"
       name: "Busy Hands Enterprise Management System"
       period: "Feb 2024 - May 2024"
-      role: "Project Manager & Full-Stack Programmer"
+      role: "Project Manager & Backend Programmer (School Project)"
       color: "emerald"
       highlights:
-        - "Engineered a 5-module system covering task scheduling, client records, inventory, and reporting workflows."
-        - "Structured relational schemas capable of handling high transaction volumes with strict data integrity."
-      overview: ""
-      features: []
-      tech-stack: []
-      challenges: []
+        - "Built the central Flask REST API and PostgreSQL database shared by a 5-module system covering task scheduling, client records, inventory and reporting."
+        - "Served modules that other teams built in Laravel, React and .NET through one API, and tested its endpoints with Postman."
+        - "Designed relational schemas with constraints that keep scheduling, client and inventory data consistent."
+      overview: >-
+        Busy Hands is an enterprise management system for a cleaning service business, built as a school project.
+        It brings the company's day-to-day work into one place across five modules, including task scheduling,
+        client records, inventory and reporting. Each module was built by a different team in its own stack
+        (Laravel, React and .NET), and all of them share one centralized PostgreSQL database through a REST API.
+        I was the project manager and the backend programmer: I built that API with Python and Flask and tested
+        its endpoints with Postman.
+      features:
+        - "Centralized PostgreSQL database that every module reads from and writes to, so client, task and inventory data stays in one place."
+        - "Flask REST API as the single entry point to that database, shared by all five modules."
+        - "Works across stacks: modules built in Laravel, React and .NET by other teams all talk to the same API."
+        - "Endpoints for task scheduling, client records, inventory and reporting."
+        - "API endpoints tested with Postman."
+      tech-stack: ["Python", "Flask", "REST API", "PostgreSQL", "Postman"]
+      challenges:
+        - "Facilitating a whole class as project manager: keeping every team's module on track so they all worked with one shared API and database."
+        - "Explaining how APIs work to classmates who were new to them: how their Laravel, React and .NET modules send requests to the Flask API and get data back."
       lessons: []
       screenshots: []
       github: ""
