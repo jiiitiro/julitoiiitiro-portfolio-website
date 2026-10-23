@@ -13,7 +13,7 @@ portfolio:
     summary: >-
       Full-stack Java developer and BSIT graduate who builds web applications with Spring Boot,
       Thymeleaf, REST APIs, SQL databases and Docker. I also build low-code business apps and
-      dashboards with Power Apps, Power Automate and Power BI.
+      automations with Power Apps and Power Automate, and I'm expanding into Power BI for data dashboards.
     share-description: "Full-stack Java developer building web applications with Spring Boot, REST APIs, SQL and Docker."
     location: "Quezon City, Philippines"
     email: "julitoiiitiro@gmail.com"
@@ -144,6 +144,41 @@ portfolio:
       demo: ""
       youtube-id: ""
       source-note: ""
+    - slug: "employee-canvas-app"
+      name: "Employee Management Canvas App"
+      period: "2026"
+      role: "Power Platform Developer | Personal Project"
+      color: "purple"
+      highlights:
+        - "Built a Power Apps canvas app to browse, search, add, edit and delete employee records."
+        - "Automated onboarding with Power Automate: every new employee gets a welcome email and is logged to an online Excel workbook."
+      overview: >-
+        A mobile-friendly Power Apps canvas app for managing employee records. HR staff can browse the employee
+        list, search and sort it, open a record to view or update it, and add new employees with their contact
+        details, department, hire date and salary. When a new employee is added, a Power Automate flow sends them
+        a welcome email and writes their details to an Excel workbook online, so there's always an up-to-date record
+        outside the app.
+      features:
+        - "Browse screen listing every employee with email and department, plus search, sort and refresh."
+        - "Add Employee form with required-field checks, a department dropdown and a hire-date picker."
+        - "Employee Details screen to view, edit or delete a record, with an auto-generated employee ID (e.g. EMP-00009)."
+        - "Power Automate flow that sends a welcome email to each new employee's address."
+        - "The same flow writes the new employee's details as a row in an Excel workbook online."
+      tech-stack: ["Power Apps", "Canvas App", "Power Fx", "Power Automate", "Excel Online", "Outlook"]
+      challenges: []
+      lessons: []
+      screenshots:
+        - file: "browse_screen.jpg"
+          caption: "Employee list with search, sort, refresh and add"
+        - file: "add_screen.jpg"
+          caption: "Add a new employee; saving triggers the welcome email and Excel log"
+        - file: "edit_screen.jpg"
+          caption: "View, edit or delete an employee's details"
+      github: ""
+      readme: ""
+      demo: ""
+      youtube-id: ""
+      source-note: "Built in Microsoft Power Platform: no public source code"
     - slug: "agreemo"
       name: "AGREEMO: Hydroponic Automation System"
       period: "Aug 2024 - May 2025"
