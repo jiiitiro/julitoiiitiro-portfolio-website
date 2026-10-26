@@ -44,6 +44,7 @@ src/main/resources/
     ├── og-image.png                     # 1200×630 link-preview image
     └── projects/<slug>/                 # Screenshots for each project
 .github/workflows/site-check.yml          # Monthly check of the live site
+HANDOFF.md                                # Progress and open tasks, for picking up work on another machine
 LICENSE                                   # MIT
 scripts/check-site.sh                     # Checks pages, links and the resume PDF
 ```
