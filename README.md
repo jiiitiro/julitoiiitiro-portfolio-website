@@ -46,6 +46,7 @@ src/main/resources/
     ├── portfolio_pic.png                # Profile photo
     ├── og-image.png                     # 1200×630 link-preview image
     └── projects/<slug>/                 # Screenshots for each project
+.github/workflows/ci.yml                  # Builds and runs the tests on every push and pull request
 .github/workflows/site-check.yml          # Monthly check of the live site
 HANDOFF.md                                # Progress and open tasks, for picking up work on another machine
 LICENSE                                   # MIT
@@ -135,6 +136,8 @@ To check the resume, open http://localhost:8080/resume.pdf. It should fit on 1�
 ```
 
 The tests check that `portfolio.yml` loads, that every project has a unique URL slug, that the resume renders to a PDF, that the sitemap lists every project page, and that GitHub READMEs are rendered safely (links resolved, unsafe HTML removed).
+
+GitHub Actions runs the same build and tests (`.github/workflows/ci.yml`) on every push to `main` and every pull request; results show in the repo's Actions tab and as a check on each PR.
 
 ## Keeping it current
 
