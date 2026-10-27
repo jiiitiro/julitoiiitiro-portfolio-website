@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en"
+<html xmlns:th="http://www.thymeleaf.org" lang="en" class="dark"
       th:with="profile=${portfolio.profile}, c=${project.color}">
 <head>
     <meta charset="UTF-8">
@@ -23,6 +23,8 @@
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script th:src="@{/theme.js}" src="/theme.js"></script>
+    <link rel="stylesheet" th:href="@{/theme.css}" href="/theme.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -51,6 +53,9 @@
             <a th:if="${profile.facebook}" th:href="${profile.facebook}" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition text-lg" title="Facebook Profile" aria-label="Facebook profile">
                 <i class="fa-brands fa-facebook"></i>
             </a>
+            <button type="button" data-theme-toggle aria-label="Switch between dark and light theme" title="Switch theme" class="hover:text-amber-400 transition text-lg">
+                <i class="fa-solid fa-sun hidden dark:inline" aria-hidden="true"></i><i class="fa-solid fa-moon dark:hidden" aria-hidden="true"></i>
+            </button>
             <a th:href="@{/resume.pdf}" href="/resume.pdf" target="_blank" class="flex items-center gap-2 border border-cyan-500/50 text-cyan-300 px-3 py-1.5 rounded-lg hover:border-cyan-400 hover:text-cyan-200 transition">
                 <i class="fa-solid fa-download" aria-hidden="true"></i> <span class="hidden sm:inline">Resume</span><span class="sr-only sm:hidden">Resume</span>
             </a>
@@ -170,7 +175,7 @@
                 <i class="fa-brands fa-github"></i> Synced from the README on GitHub
             </a>
         </div>
-        <article th:class="|bg-slate-900/60 border border-slate-800 rounded-2xl p-6 md:p-8 prose prose-invert prose-slate max-w-none prose-headings:font-extrabold prose-a:text-${c}-300 prose-code:text-${c}-200 prose-code:before:content-none prose-code:after:content-none prose-pre:bg-slate-950 prose-img:rounded-lg prose-table:text-sm|"
+        <article th:class="|bg-slate-900/60 border border-slate-800 rounded-2xl p-6 md:p-8 prose dark:prose-invert prose-slate prose-pre:text-slate-200 max-w-none prose-headings:font-extrabold prose-a:text-${c}-300 prose-code:text-${c}-200 prose-code:before:content-none prose-code:after:content-none prose-pre:bg-slate-950 prose-img:rounded-lg prose-table:text-sm|"
                  th:utext="${readmeHtml}">README</article>
     </section>
 

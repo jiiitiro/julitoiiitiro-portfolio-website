@@ -12,6 +12,7 @@ My personal portfolio site: a single-page Spring Boot app that shows my skills, 
 - **Experience:** work history
 - **Education & Certifications:** degree, plus certifications split into Completed and In Progress
 - **Resume:** an ATS-friendly resume at `/resume` (web page) and `/resume.pdf` (download), linked from the navbar and hero
+- **Dark and light themes:** a sun/moon button in the navbar switches themes. Everyone starts on dark; light is optional and the choice is saved in the browser
 - **Sharing and search:** a 1200×630 preview image, Open Graph and Twitter tags for link previews (Messenger, LinkedIn), a meta description and canonical URL on every page, plus `/robots.txt` and a `/sitemap.xml` that lists every project page
 
 ## Tech stack
@@ -39,6 +40,8 @@ src/main/resources/
 ├── templates/project-detail.html        # Project detail page (/projects/<slug>)
 ├── templates/resume.html                # The resume (web page and PDF)
 ├── templates/error/404.html             # Not-found page
+├── static/theme.js                     # Dark/light toggle; points Tailwind's colors at theme.css
+├── static/theme.css                    # Color values for each theme (light flips each Tailwind scale)
 └── static/images/
     ├── portfolio_pic.png                # Profile photo
     ├── og-image.png                     # 1200×630 link-preview image

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en" th:with="profile=${portfolio.profile}">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" class="dark" th:with="profile=${portfolio.profile}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +24,8 @@
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script th:src="@{/theme.js}" src="/theme.js"></script>
+    <link rel="stylesheet" th:href="@{/theme.css}" href="/theme.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -41,10 +43,15 @@
             Julito III T. Tiro
         </a>
 
-        <!-- Mobile Hamburger Button -->
-        <button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-slate-300 hover:text-fuchsia-400 text-2xl focus:outline-none transition">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+        <!-- Mobile: theme toggle and hamburger -->
+        <div class="md:hidden flex items-center gap-5">
+            <button type="button" data-theme-toggle aria-label="Switch between dark and light theme" title="Switch theme" class="text-slate-300 hover:text-amber-400 text-xl transition">
+                <i class="fa-solid fa-sun hidden dark:inline" aria-hidden="true"></i><i class="fa-solid fa-moon dark:hidden" aria-hidden="true"></i>
+            </button>
+            <button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="text-slate-300 hover:text-fuchsia-400 text-2xl focus:outline-none transition">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
 
         <!-- Desktop Navigation -->
         <nav class="hidden md:flex space-x-8 text-sm font-semibold text-slate-300 items-center">
@@ -62,6 +69,9 @@
             <a th:if="${profile.facebook}" th:href="${profile.facebook}" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition text-lg" title="Facebook Profile" aria-label="Facebook profile">
                 <i class="fa-brands fa-facebook"></i>
             </a>
+            <button type="button" data-theme-toggle aria-label="Switch between dark and light theme" title="Switch theme" class="hover:text-amber-400 transition text-lg">
+                <i class="fa-solid fa-sun hidden dark:inline" aria-hidden="true"></i><i class="fa-solid fa-moon dark:hidden" aria-hidden="true"></i>
+            </button>
             <a th:href="@{/resume.pdf}" href="/resume.pdf" target="_blank" class="flex items-center gap-2 border border-cyan-500/50 text-cyan-300 px-3 py-1.5 rounded-lg hover:border-cyan-400 hover:text-cyan-200 transition">
                 <i class="fa-solid fa-download"></i> Resume
             </a>
