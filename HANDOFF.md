@@ -45,7 +45,7 @@ Live site: https://julitoiiitiro-portfolio.up.railway.app/ (Railway deploys push
 
 - [ ] Busy Hands: screenshots in `static/images/projects/busy-hands/`, lessons, GitHub or demo link, or a `source-note` if the code is private.
 - [ ] `lessons` for Employee Canvas App, AGREEMO and Busy Hands (the user writes these; don't invent them).
-- [ ] Certificate proof links: 100 Days of Code and Mastering REST API linked; other certifications pending.
+- [ ] Certificate proof links: 100 Days of Code, Mastering REST API, and Project Management 101 linked; other certifications pending.
 - [ ] Confirm Railway is deploying the latest `main`. On 2026-10-21 it was found serving an old commit, though the Docker image built and ran fine locally. The user needs to check the Railway dashboard.
 - [ ] After deploy, test the share preview, and optionally set up a custom domain.
 
