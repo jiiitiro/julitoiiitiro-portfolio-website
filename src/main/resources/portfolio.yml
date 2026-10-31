@@ -332,6 +332,7 @@ portfolio:
       provider: "Fortinet"
       status: completed
       color: "amber"
+      url: "/images/certification/fortinet.pdf"
     - name: "Ethical Hacking"
       provider: "Upskill I.T. Workshop"
       status: completed
