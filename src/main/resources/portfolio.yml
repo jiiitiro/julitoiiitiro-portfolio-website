@@ -313,6 +313,7 @@ portfolio:
       provider: "Udemy"
       status: completed
       color: "emerald"
+      url: "/images/certification/Mastering%20REST%20API%20with%20FastAPI%20%26%20Flask.pdf"
     - name: "100 Days of Code: The Complete Python Pro Bootcamp"
       provider: "Udemy"
       status: completed
