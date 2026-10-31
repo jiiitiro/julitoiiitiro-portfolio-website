@@ -313,22 +313,30 @@ portfolio:
       provider: "Udemy"
       status: completed
       color: "emerald"
+      url: "/images/certification/Mastering%20REST%20API%20with%20FastAPI%20%26%20Flask.pdf"
     - name: "100 Days of Code: The Complete Python Pro Bootcamp"
       provider: "Udemy"
       status: completed
       color: "rose"
+      url: "/images/certification/100_DAYS_OF_CODE_PYTHON_CERTIFICATE.pdf"
     - name: "Canvas Apps, Dataverse & Model-Driven Apps in Power Apps"
       provider: "Microsoft Learn"
       status: completed
       color: "purple"
+    - name: "Project Management 101: Introduction to Traditional, Hybrid, and Agile"
+      provider: "MST Connect Educational Consultancy"
+      status: completed
+      color: "emerald"
+      url: "/images/certification/project_management_certificate.pdf"
     - name: "NSE 1 Network Security Associate"
       provider: "Fortinet"
       status: completed
       color: "amber"
-    - name: "Ethical Hacking & Cybersecurity Foundations"
-      provider: "Upskill I.T. Workshop / Udemy"
+    - name: "Ethical Hacking"
+      provider: "Upskill I.T. Workshop"
       status: completed
       color: "blue"
+      url: "/images/certification/ethical_hacking.pdf"
     - name: "Java NC III"
       provider: "Technical Education and Skills Development Authority (TESDA)"
       status: in-progress

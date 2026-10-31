@@ -43,6 +43,7 @@ src/main/resources/
 ├── static/theme.js                     # Dark/light toggle; points Tailwind's colors at theme.css
 ├── static/theme.css                    # Color values for each theme (light flips each Tailwind scale)
 └── static/images/
+    ├── certification/                   # Certificate proof files (e.g. PDFs)
     ├── portfolio_pic.png                # Profile photo
     ├── og-image.png                     # 1200×630 link-preview image
     └── projects/<slug>/                 # Screenshots for each project
@@ -84,7 +85,7 @@ All text lives in one file: `src/main/resources/portfolio.yml`. Edit it, then re
 
 - **Profile:** name, title, tagline, summary, contact details, and `source-code` (the repo link in the footer; blank hides it). `phone` appears only on the resume. Set `linkedin` to your profile URL to show LinkedIn buttons in the navbar, hero, footer and resume; while it's blank they stay hidden. `facebook` works the same way but appears only as an icon in the navbar, mobile menu and footer (not in the intro or on the resume).
 - **Skills, projects, experience, education:** add, remove or reorder list entries
-- **Certifications:** set `status: completed` or `status: in-progress`. When you finish one, change its status. Add `url: "https://..."` to link it to its certificate.
+- **Certifications:** set `status: completed` or `status: in-progress`. When you finish one, change its status. Add `url:` with a link to its certificate (e.g. `url: "/images/certification/100_DAYS_OF_CODE_PYTHON_CERTIFICATE.pdf"` or an online verification URL).
 - `color` and `icon` only affect the website's accents; the resume ignores them.
 
 ### Adding project details and screenshots

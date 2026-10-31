@@ -1,7 +1,7 @@
 # Handoff: portfolio work, for Claude on a new machine
 
 Read this first, then `README.md` (it documents structure, content editing and run steps).
-Last updated 2026-10-26. Last commit at handoff: `f63660d`.
+Last updated 2026-11-01.
 
 ## Setup on the new machine
 
@@ -45,7 +45,7 @@ Live site: https://julitoiiitiro-portfolio.up.railway.app/ (Railway deploys push
 
 - [ ] Busy Hands: screenshots in `static/images/projects/busy-hands/`, lessons, GitHub or demo link, or a `source-note` if the code is private.
 - [ ] `lessons` for Employee Canvas App, AGREEMO and Busy Hands (the user writes these; don't invent them).
-- [ ] Certificate proof links: no certification has a `url:` yet. The user will supply them.
+- [ ] Certificate proof links: 100 Days of Code, Mastering REST API, and Project Management 101 linked; other certifications pending.
 - [ ] Confirm Railway is deploying the latest `main`. On 2026-10-21 it was found serving an old commit, though the Docker image built and ran fine locally. The user needs to check the Railway dashboard.
 - [ ] After deploy, test the share preview, and optionally set up a custom domain.
 
