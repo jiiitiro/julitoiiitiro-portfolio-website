@@ -314,15 +314,20 @@ portfolio:
       status: completed
       color: "emerald"
       url: "/images/certification/Mastering%20REST%20API%20with%20FastAPI%20%26%20Flask.pdf"
+    - name: "Canvas Apps, Dataverse & Model-Driven Apps in Power Apps"
+      provider: "Microsoft Learn"
+      status: completed
+      color: "purple"
     - name: "100 Days of Code: The Complete Python Pro Bootcamp"
       provider: "Udemy"
       status: completed
       color: "rose"
       url: "/images/certification/100_DAYS_OF_CODE_PYTHON_CERTIFICATE.pdf"
-    - name: "Canvas Apps, Dataverse & Model-Driven Apps in Power Apps"
-      provider: "Microsoft Learn"
+    - name: "The Complete Full-Stack Web Development Bootcamp"
+      provider: "Udemy"
       status: completed
-      color: "purple"
+      color: "blue"
+      url: "/images/certification/The_Complete_Full-Stack_Web_Development_Bootcamp.pdf"
     - name: "Project Management 101: Introduction to Traditional, Hybrid, and Agile"
       provider: "MST Connect Educational Consultancy"
       status: completed

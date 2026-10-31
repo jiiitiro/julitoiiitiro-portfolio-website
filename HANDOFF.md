@@ -19,6 +19,7 @@ Live site: https://julitoiiitiro-portfolio.up.railway.app/ (Railway deploys push
 
 - **No Claude attribution in commits.** No `Co-Authored-By: Claude` trailer. Short lowercase commit messages, like the existing history.
 - **Update README.md before every commit and push**, in the same commit as the change.
+- **When pushing changes, always generate a PR title and description.** Whenever changes are pushed or prepared for a pull request, create a ready-to-use GitHub PR title and description in markdown format summarizing the commits and changes.
 - **Never credit the user with AGREEMO's mobile app or web dashboard.** Their role: project manager, backend API (Python, Flask REST API, PostgreSQL), helped build the hardware. Teammates built the Flutter app and the dashboard.
 - **Never publish the AGREEMO manuscript** (it has team CVs with phones and addresses). It is kept outside the repo, on the old machine only.
 - **Phone number:** only on `/resume` and `/resume.pdf`, never on the website.
