@@ -1,7 +1,7 @@
 # Handoff: portfolio work, for Claude on a new machine
 
 Read this first, then `README.md` (it documents structure, content editing and run steps).
-Last updated 2026-11-01.
+Last updated 2026-11-01. Last commit on `add-certificate`: `aee1315`.
 
 ## Setup on the new machine
 
@@ -28,7 +28,7 @@ Live site: https://julitoiiitiro-portfolio.up.railway.app/ (Railway deploys push
 ## Milestone plan: progress
 
 1. **Quick content fixes**: done.
-2. **Skills and certifications cleanup**: done.
+2. **Skills and certifications cleanup**: done. Certificate proof documents and URLs added under `static/images/certification/` for 100 Days of Code, Mastering REST API, Project Management 101, Fortinet NSE 1, and Ethical Hacking.
 3. **`portfolio.yml` content file and resume at `/resume` and `/resume.pdf`**: done.
 4. **Project detail pages at `/projects/<slug>`**: structure, carousel, live GitHub README sync and local video support are done. Per project:
    | Project | State | Still open |
@@ -45,7 +45,7 @@ Live site: https://julitoiiitiro-portfolio.up.railway.app/ (Railway deploys push
 
 - [ ] Busy Hands: screenshots in `static/images/projects/busy-hands/`, lessons, GitHub or demo link, or a `source-note` if the code is private.
 - [ ] `lessons` for Employee Canvas App, AGREEMO and Busy Hands (the user writes these; don't invent them).
-- [ ] Certificate proof links: 100 Days of Code, Mastering REST API, and Project Management 101 linked; other certifications pending.
+- [ ] Certificate proof links: remaining completed certifications (Master Java, Microsoft Learn Canvas Apps) and in-progress certifications when completed.
 - [ ] Confirm Railway is deploying the latest `main`. On 2026-10-21 it was found serving an old commit, though the Docker image built and ran fine locally. The user needs to check the Railway dashboard.
 - [ ] After deploy, test the share preview, and optionally set up a custom domain.
 
