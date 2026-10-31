@@ -317,6 +317,7 @@ portfolio:
       provider: "Udemy"
       status: completed
       color: "rose"
+      url: "/images/certification/100_DAYS_OF_CODE_PYTHON_CERTIFICATE.pdf"
     - name: "Canvas Apps, Dataverse & Model-Driven Apps in Power Apps"
       provider: "Microsoft Learn"
       status: completed
