@@ -336,6 +336,7 @@ portfolio:
       provider: "Upskill I.T. Workshop"
       status: completed
       color: "blue"
+      url: "/images/certification/ethical_hacking.pdf"
     - name: "Java NC III"
       provider: "Technical Education and Skills Development Authority (TESDA)"
       status: in-progress
